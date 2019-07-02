@@ -2,22 +2,29 @@ import React, { Component } from 'react';
 import CardComponents from '../Card-Components/CardComponents';
 import Nav from '../Nav/Nav'
 import './App.scss';
+import Opening from '../Opening/Opening';
+
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      films: [],
+      film: [],
       people: [],
       vehicles: [],
-      planets: []
+      planets: [],
+      isHidden: false
     }
   }
+  
   componentDidMount = () => {
     const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
+    setTimeout(() => {
+      this.setState({ isHidden: true })
+    }, 30000);
     fetch('https://swapi.co/api/films')
       .then(response => response.json())
-      .then(data => this.setState({ films: data.results[randomNumber] }))
+      .then(data => this.setState({ film: data.results[randomNumber] }))
       .catch(err => console.log(err))
 
     // fetch('https://swapi.co/api/people/')
@@ -35,12 +42,11 @@ class App extends Component {
     //   .then(data => this.setState({ planets: data.results}))
     //   .catch(err => console.log(err))
   }
+
   render() {
     return (
       <div className="App">
-        {this.state.films.opening_crawl}
-        {this.state.films.title}
-        {this.state.films.release_date}
+        {!this.state.isHidden && <Opening film={this.state.film}/>}
         <Nav />
         <CardComponents people={this.state.people} planets={this.state.planets} vehicles={this.state.vehicles}/>
       </div>
