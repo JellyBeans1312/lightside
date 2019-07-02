@@ -1,16 +1,16 @@
 import React from 'react';
 import './Card.scss'
 
-const Card = ({info}) => {
-  console.log(info)
+const Card = ({props, addFavorite, id}) => {
+  // console.log(props)
   return (
     <article>
-      <p>{info[0]}</p>
-      <p>{info[1]}</p>
-      <p>{info[2]}</p>
-      <p>{info[3]}</p>
-      <p>{info[4]}</p>
-      <button>🌟</button>
+      <p>{props[0]}</p>
+      <p>{props[1]}</p>
+      <p>{props[2]}</p>
+      <p>{props[3]}</p>
+      <p>{props[4]}</p>
+      <button onClick={() => addFavorite(props)}>X</button>
     </article>
   )
 }

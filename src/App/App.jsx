@@ -14,6 +14,7 @@ class App extends Component {
       people: [],
       vehicles: [],
       planets: [],
+      isFavorite: [],
       isHidden: false,
       group: 'people'
     }
@@ -32,14 +33,16 @@ class App extends Component {
     fetch('https://swapi.co/api/people/')
       .then(response => response.json())
       .then(data => this.setState({people: data.results.map(person => {
-        const info = [person.name, person.birth_year, 
-          person.gender, person.height, 
-          person.eye_color, person.created]
+        const info = [person.name, 
+          person.birth_year, 
+          person.gender, 
+          person.height, 
+          person.eye_color, 
+          person.created]
         return info
       })}))
-      // .then(data => this.setState({ people: [data.results.name, data.results.birth_year, data.results.gender, data.results.heigth, data.results.eye_color, data.results.created] }))
       .catch(err => console.log(err))
-    // console.log(this.state.people)
+
   //   fetch('https://swapi.co/api/vehicles')
   //     .then(response => response.json())
   //     .then(data => this.setState({ vehicles: data.results }))
@@ -50,8 +53,20 @@ class App extends Component {
   //     .then(data => this.setState({ planets: data.results}))
   //     .catch(err => console.log(err))
   }
+
+  handleFavorite = (prop) => {
+      const favorites = this.state.isFavorite
+
+      if(!favorites.includes(prop)) {
+        this.setState({isFavorite: [...favorites ,prop]})
+      } else {
+        const unfavorite = favorites.filter(favorite => favorite !== prop)
+        this.setState({isFavorite: unfavorite})
+      }
+  }
   
   render() {
+    console.log(this.state.isFavorite)
     return (
       <main className="App">
         {/* {!this.state.isHidden && <Opening film={this.state.film}/>} */}
@@ -72,7 +87,9 @@ class App extends Component {
         {/* <Route exact path='/' component={home}/> */}
         <Route 
           exact path='/people' 
-          component={() => <CardComponents group={this.state.people}/>}
+          component={() => <CardComponents 
+            group={this.state.people} 
+            addFavorite={this.handleFavorite}/>}
         />
         <Route 
           exact path='/planets' 
