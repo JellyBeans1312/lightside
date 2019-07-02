@@ -13,11 +13,12 @@ class App extends Component {
       people: [],
       vehicles: [],
       planets: [],
-      isHidden: false
+      isHidden: false,
+      group: 'people'
     }
   }
   
-  // componentDidMount = () => {
+  componentDidMount = () => {
   //   const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
   //   setTimeout(() => {
   //     this.setState({ isHidden: true })
@@ -27,10 +28,10 @@ class App extends Component {
   //     .then(data => this.setState({ film: data.results[randomNumber] }))
   //     .catch(err => console.log(err))
 
-  //   fetch('https://swapi.co/api/people/')
-  //     .then(response => response.json())
-  //     .then(data => this.setState({ people: data.results }))
-  //     .catch(err => console.log(err))
+    fetch('https://swapi.co/api/people/')
+      .then(response => response.json())
+      .then(data => this.setState({ people: data.results }))
+      .catch(err => console.log(err))
     
   //   fetch('https://swapi.co/api/vehicles')
   //     .then(response => response.json())
@@ -41,14 +42,14 @@ class App extends Component {
   //     .then(response => response.json())
   //     .then(data => this.setState({ planets: data.results}))
   //     .catch(err => console.log(err))
-  // }
+  }
 
   render() {
     return (
       <div className="App">
         {/* {!this.state.isHidden && <Opening film={this.state.film}/>} */}
         <Nav />
-        <CardComponents people={this.state.people} planets={this.state.planets} vehicles={this.state.vehicles}/>
+        <CardComponents people={this.state.people}/>
       </div>
     );
   }

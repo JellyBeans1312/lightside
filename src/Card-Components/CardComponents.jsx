@@ -1,8 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Card from '../Card/Card.jsx'
+import './CardComponents.scss'
 
-const CardComponents = () => {
+const CardComponents = ({people}) => {
+
+  
+  const cards = people.map(person => <Card person={person} key={person.created}/>)
   return (
-    <div></div>
+    <section>
+      {cards}
+    </section>
   )
 }
 
