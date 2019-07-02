@@ -9,11 +9,11 @@ const Nav = () => {
         <button>Favorites</button>
         <span></span>
       </div>
-      <div>
+      <section>
         <button>People</button>
         <button>Planets</button>
         <button>Vehicles</button>
-      </div>
+      </section>
     </nav>
   )
 }
