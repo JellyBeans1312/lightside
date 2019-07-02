@@ -1,15 +1,15 @@
 import React from 'react';
 import './Card.scss'
 
-const Card = ({person}) => {
-  console.log(person)
+const Card = ({info}) => {
+  console.log(info)
   return (
     <article>
-      <p>{person.name}</p>
-      <p>{person.hair_color}</p>
-      <p>{person.gender}</p>
-      <p>{person.birth_year}</p>
-      <p>{person.height}</p>
+      <p>{info[0]}</p>
+      <p>{info[1]}</p>
+      <p>{info[2]}</p>
+      <p>{info[3]}</p>
+      <p>{info[4]}</p>
       <button>🌟</button>
     </article>
   )

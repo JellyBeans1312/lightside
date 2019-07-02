@@ -2,10 +2,10 @@ import React from 'react';
 import Card from '../Card/Card.jsx'
 import './CardComponents.scss'
 
-const CardComponents = ({people}) => {
+const CardComponents = ({group}) => {
 
-  
-  const cards = people.map(person => <Card person={person} key={person.created}/>)
+  console.log(group)
+  const cards = group.map(info => <Card person={info} key={info[5]}/>)
   return (
     <section>
       {cards}

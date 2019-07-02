@@ -31,9 +31,15 @@ class App extends Component {
 
     fetch('https://swapi.co/api/people/')
       .then(response => response.json())
-      .then(data => this.setState({ people: data.results }))
+      .then(data => this.setState({people: data.results.map(person => {
+        const info = [person.name, person.birth_year, 
+          person.gender, person.height, 
+          person.eye_color, person.created]
+        return info
+      })}))
+      // .then(data => this.setState({ people: [data.results.name, data.results.birth_year, data.results.gender, data.results.heigth, data.results.eye_color, data.results.created] }))
       .catch(err => console.log(err))
-    
+    // console.log(this.state.people)
   //   fetch('https://swapi.co/api/vehicles')
   //     .then(response => response.json())
   //     .then(data => this.setState({ vehicles: data.results }))
@@ -44,7 +50,7 @@ class App extends Component {
   //     .then(data => this.setState({ planets: data.results}))
   //     .catch(err => console.log(err))
   }
-
+  
   render() {
     return (
       <main className="App">
@@ -66,15 +72,15 @@ class App extends Component {
         {/* <Route exact path='/' component={home}/> */}
         <Route 
           exact path='/people' 
-          component={() => <CardComponents people={this.state.people}/>}
+          component={() => <CardComponents group={this.state.people}/>}
         />
         <Route 
           exact path='/planets' 
-          component={() => <CardComponents people={this.state.planets}/>}
+          component={() => <CardComponents group={this.state.planets}/>}
         />
         <Route 
           exact path='/vehicles' 
-          component={() => <CardComponents people={this.state.vehicles}/>}
+          component={() => <CardComponents group={this.state.vehicles}/>}
         />
       </main>
     );
