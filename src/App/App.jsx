@@ -95,10 +95,6 @@ class App extends Component {
         {/* {!this.state.isHidden && <Opening film={this.state.film}/>} */}
         <nav>
           <h1>Light Side</h1>
-          <div>
-            <button>Favorites</button>
-            <span></span>
-          </div>
           <section>
             <NavLink 
               to={'/'} 
