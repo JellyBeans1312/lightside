@@ -107,28 +107,28 @@ class App extends Component {
               className='nav' 
               onClick={() => this.updateGroup('people')}
               > 
-                People 
+                <h2>People</h2> 
             </NavLink>
             <NavLink 
               to='/planets' 
               className='nav' 
               onClick={() => this.updateGroup('planets')}
               > 
-                Planets 
+                <h2>Planets</h2> 
             </NavLink>
             <NavLink 
               to='/vehicles' 
               className='nav' 
               onClick={() => this.updateGroup('vehicles')}
               > 
-                Vehicles 
+                <h2>Vehicles</h2> 
             </NavLink>
             <NavLink 
               to='/favorites' 
               className='nav' 
               onClick={() => this.updateGroup('favorites')}
               > 
-                Favorites <span>{this.state.isFavorite.length}</span>
+                <h2>Favorites <span>{this.state.isFavorite.length}</span></h2>
             </NavLink>
           </section>
         </nav>

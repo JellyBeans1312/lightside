@@ -1,4 +1,12 @@
-@import url(http://allfont.net/allfont.css?fonts=star-jedi);
+
+@font-face {font-family: "STARWARS";
+  src: url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.eot");
+  src: url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.eot?#iefix") format("embedded-opentype"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.woff2") format("woff2"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.woff") format("woff"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.ttf") format("truetype"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.svg#STARWARS") format("svg");
+}
 
 html {
   height: 100%;
@@ -34,7 +42,7 @@ nav {
   h1 {
     color: white;
     width: 80%;
-    margin-left: 10%
+    margin-left: 10%;
   }
   div {
     width: 10%;
@@ -51,9 +59,10 @@ nav {
   }
 }
 
-.nav {
-  background: red;
-  font-family: 'Star Jedi', arial;
+h1,
+span,
+h2 {
+  font-family: "STARWARS";
 }
 
 .home {
