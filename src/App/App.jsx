@@ -28,22 +28,26 @@ class App extends Component {
     //   .then(response => response.json())
     //   .then(data => this.setState({ film: data.results[randomNumber] }))
     //   .catch(err => console.log(err))
-
+  }
+  getPeople = () => {
     fetch('https://swapi.co/api/people/')
-      .then(response => response.json())
-      .then(data => this.setState({people: data.results.map(person => {
-        const info = [
-          `Name: ${person.name}`, 
-          `Birth Year: ${person.birth_year}`, 
-          `Gender: ${person.gender}`, 
-          `Height: ${person.height}`, 
-          `Eye Color: ${person.eye_color}`, 
-          person.created]
+    .then(response => response.json())
+    .then(data => this.setState({people: data.results.map(person => {
+      const info = [
+        `Name: ${person.name}`, 
+        `Birth Year: ${person.birth_year}`, 
+        `Gender: ${person.gender}`, 
+        `Height: ${person.height}`, 
+        `Eye Color: ${person.eye_color}`, 
+        person.created]
         return info
       })}))
       .catch(err => console.log(err))
+      this.updateGroup('people')
+    }
 
-    fetch('https://swapi.co/api/vehicles')
+    getVehicles = () => {
+      fetch('https://swapi.co/api/vehicles')
       .then(response => response.json())
       .then(data => this.setState({vehicles: data.results.map(vehicle => {
         const info = [
@@ -57,8 +61,11 @@ class App extends Component {
         return info
       })}))
       .catch(err => console.log(err))
+      this.updateGroup('vehicles')
+    }
     
-    fetch('https://swapi.co/api/planets')
+    getPlanets = () => {
+      fetch('https://swapi.co/api/planets')
       .then(response => response.json())
       .then(data => this.setState({planets: data.results.map(planet => {
         const info = [
@@ -72,7 +79,9 @@ class App extends Component {
         return info
       })}))
       .catch(err => console.log(err))
-  }
+      this.updateGroup('planets')
+    }
+  
 
   handleFavorite = (prop) => {
       const favorites = this.state.isFavorite
@@ -106,21 +115,21 @@ class App extends Component {
             <NavLink 
               to='/people' 
               className='nav link' 
-              onClick={() => this.updateGroup('people')}
+              onClick={this.getPeople}
               > 
                 <h2>PEOPLE</h2> 
             </NavLink>
             <NavLink 
               to='/planets' 
               className='nav link' 
-              onClick={() => this.updateGroup('planets')}
+              onClick={this.getPlanets}
               > 
                 <h2>PLANETS</h2> 
             </NavLink>
             <NavLink 
               to='/vehicles' 
               className='nav link' 
-              onClick={() => this.updateGroup('vehicles')}
+              onClick={() => this.getVehicles()}
               > 
                 <h2>VEHICLES</h2> 
             </NavLink>
