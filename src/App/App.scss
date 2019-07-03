@@ -42,7 +42,8 @@ nav {
   h1 {
     color: white;
     width: 80%;
-    margin-left: 10%;
+    margin: 20px 0 0 10%;
+    font-size: 50px;
   }
   div {
     width: 10%;
@@ -59,13 +60,28 @@ nav {
   }
 }
 
+.nav {
+  height: 40px;
+}
+
 h1,
 span,
-h2 {
+h2,
+.nav {
   font-family: "STARWARS";
+  text-decoration-color: white
+}
+
+h1:hover,
+span:hover,
+h2:hover,
+.nav:hover{
+  color: #ffd700;
+  text-decoration-color: #ffd700
 }
 
 .home {
   width: 100%;
   background: none;
+  text-decoration: none;
 }

@@ -99,7 +99,7 @@ class App extends Component {
               className='nav home' 
               onClick={() => this.updateGroup('home')}
               > 
-              <h1>Light Side</h1>
+              <h1>LIGHT SIDE</h1>
             </NavLink>
           <section>
             <NavLink 
@@ -107,28 +107,28 @@ class App extends Component {
               className='nav' 
               onClick={() => this.updateGroup('people')}
               > 
-                <h2>People</h2> 
+                <h2>PEOPLE</h2> 
             </NavLink>
             <NavLink 
               to='/planets' 
               className='nav' 
               onClick={() => this.updateGroup('planets')}
               > 
-                <h2>Planets</h2> 
+                <h2>PLANETS</h2> 
             </NavLink>
             <NavLink 
               to='/vehicles' 
               className='nav' 
               onClick={() => this.updateGroup('vehicles')}
               > 
-                <h2>Vehicles</h2> 
+                <h2>VEHICLES</h2> 
             </NavLink>
             <NavLink 
               to='/favorites' 
               className='nav' 
               onClick={() => this.updateGroup('favorites')}
               > 
-                <h2>Favorites <span>{this.state.isFavorite.length}</span></h2>
+                <h2>FAVORITES <span>{this.state.isFavorite.length}</span></h2>
             </NavLink>
           </section>
         </nav>
