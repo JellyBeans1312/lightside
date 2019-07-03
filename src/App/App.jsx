@@ -32,11 +32,12 @@ class App extends Component {
     fetch('https://swapi.co/api/people/')
       .then(response => response.json())
       .then(data => this.setState({people: data.results.map(person => {
-        const info = [person.name, 
-          person.birth_year, 
-          person.gender, 
-          person.height, 
-          person.eye_color, 
+        const info = [
+          `Name: ${person.name}`, 
+          `Birth Year: ${person.birth_year}`, 
+          `Gender: ${person.gender}`, 
+          `Height: ${person.height}`, 
+          `Eye Color: ${person.eye_color}`, 
           person.created]
         return info
       })}))
@@ -46,10 +47,10 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({vehicles: data.results.map(vehicle => {
         const info = [
-          vehicle.name,
-          vehicle.model,
-          vehicle.vehicle_class,
-          vehicle.passengers,
+          `Name: ${vehicle.name}`,
+          `Model: ${vehicle.model}`,
+          `Class: ${vehicle.vehicle_class}`,
+          `Passengers: ${vehicle.passengers}`,
           null,
           vehicle.created
         ]
@@ -61,10 +62,10 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({planets: data.results.map(planet => {
         const info = [
-          planet.name,
-          planet.terrain,
-          planet.diameter,
-          planet.population,
+          `Name: ${planet.name}`,
+          `Terrain: ${planet.terrain}`,
+          `Diameter: ${planet.diameter}`,
+          `Population: ${planet.population}`,
           null,
           planet.created
         ]
