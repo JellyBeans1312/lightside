@@ -94,15 +94,14 @@ class App extends Component {
       <main className="App">
         {/* {!this.state.isHidden && <Opening film={this.state.film}/>} */}
         <nav>
-          <h1>Light Side</h1>
-          <section>
             <NavLink 
               to={'/'} 
-              className='nav' 
+              className='nav home' 
               onClick={() => this.updateGroup('home')}
               > 
-                Home 
+              <h1>Light Side</h1>
             </NavLink>
+          <section>
             <NavLink 
               to='/people' 
               className='nav' 
@@ -129,7 +128,7 @@ class App extends Component {
               className='nav' 
               onClick={() => this.updateGroup('favorites')}
               > 
-                Favorites<span>{this.state.isFavorite.length}</span>
+                Favorites <span>{this.state.isFavorite.length}</span>
             </NavLink>
           </section>
         </nav>
