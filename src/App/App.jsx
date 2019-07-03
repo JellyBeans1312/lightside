@@ -15,26 +15,39 @@ class App extends Component {
       planets: [],
       isFavorite: [],
       isHidden: false,
-      page: 'people'
+      page: 'home'
     }
   }
   
   componentDidMount = () => {
-    // const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
-    // setTimeout(() => {
-    //   this.setState({ isHidden: true })
-    // }, 30000);
-    // fetch('https://swapi.co/api/films')
-    //   .then(response => response.json())
-    //   .then(data => this.setState({ film: data.results[randomNumber] }))
-    //   .catch(err => console.log(err))
+    const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
+    setTimeout(() => {
+      this.setState({ isHidden: true })
+    }, 30000);
+    fetch('https://swapi.co/api/films')
+      .then(response => response.json())
+      .then(data => this.setState({ film: data.results[randomNumber] }))
+      .catch(err => console.log(err))
   }
+
+  getHome = () => {
+    this.setState({page:'home'})
+    const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
+    setTimeout(() => {
+      this.setState({ isHidden: true })
+    }, 30000);
+    fetch('https://swapi.co/api/films')
+      .then(response => response.json())
+      .then(data => this.setState({ film: data.results[randomNumber] }))
+      .catch(err => console.log(err))
+  }
+
   getPeople = () => {
     fetch('https://swapi.co/api/people/')
     .then(response => response.json())
     .then(data => this.setState({people: data.results.map(person => {
       const info = [
-        `Name: ${person.name}`, 
+        person.name, 
         `Birth Year: ${person.birth_year}`, 
         `Gender: ${person.gender}`, 
         `Height: ${person.height}`, 
@@ -51,7 +64,7 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({vehicles: data.results.map(vehicle => {
         const info = [
-          `Name: ${vehicle.name}`,
+          vehicle.name,
           `Model: ${vehicle.model}`,
           `Class: ${vehicle.vehicle_class}`,
           `Passengers: ${vehicle.passengers}`,
@@ -69,7 +82,7 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({planets: data.results.map(planet => {
         const info = [
-          `Name: ${planet.name}`,
+          planet.name,
           `Terrain: ${planet.terrain}`,
           `Diameter: ${planet.diameter}`,
           `Population: ${planet.population}`,
@@ -97,7 +110,7 @@ class App extends Component {
   updateGroup = (string) => {
     this.setState({page: string})
   }
-  
+
   render() {
     console.log(this.state.isFavorite)
     return (
@@ -105,7 +118,7 @@ class App extends Component {
         {/* {!this.state.isHidden && <Opening film={this.state.film}/>} */}
         <nav>
             <NavLink 
-              to={'/'} 
+              to={'/home'} 
               className='nav home' 
               onClick={() => this.updateGroup('home')}
               > 

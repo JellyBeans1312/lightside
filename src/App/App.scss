@@ -34,6 +34,7 @@ body {
 
 nav {
   box-sizing: border-box;
+  padding-top: 20px;
   border: white 1px solid;
   width: 100%;
   height: 15%;
@@ -42,7 +43,7 @@ nav {
   h1 {
     color: white;
     width: 300px;
-    margin: 20px 0 0 33%;
+    margin: auto;
     font-size: 50px;
   }
   div {
@@ -50,7 +51,7 @@ nav {
   }
   section {
     width: 80%;
-    margin-left: 10%;
+    margin: auto;
     display: flex;
     justify-content: space-around;
     button {
@@ -89,4 +90,14 @@ h2:hover,
   width: 100%;
   background: none;
   text-decoration: none;
+}
+
+.active {
+  
+  h1{
+    color:#ffd700
+  }
+  h2 {
+    color:#ffd700
+  }
 }
