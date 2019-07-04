@@ -1,33 +1,100 @@
+
+@font-face {font-family: "STARWARS";
+  src: url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.eot");
+  src: url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.eot?#iefix") format("embedded-opentype"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.woff2") format("woff2"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.woff") format("woff"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.ttf") format("truetype"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.svg#STARWARS") format("svg");
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+body {
+  background: url('../images/star-background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
 .App {
   text-align: center;
+  height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav {
+  box-sizing: border-box;
+  padding-top: 20px;
+  // border: white 1px solid;
+  width: 100%;
+  height: 15%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  flex-wrap: wrap;
+  h1 {
+    color: white;
+    width: 300px;
+    margin: auto;
+    font-size: 50px;
   }
-  to {
-    transform: rotate(360deg);
+  div {
+    width: 10%;
+  }
+  section {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    button {
+      height: 30px;
+      width: 100px;
+    }
+  }
+}
+
+.link {
+  height: 20px;
+  margin-top: 10px;
+}
+
+h2 {
+  margin: 0;
+}
+
+h1,
+span,
+h2,
+.nav {
+  font-family: "STARWARS";
+  text-decoration-color: white
+}
+
+h1:hover,
+span:hover,
+h2:hover,
+.nav:hover{
+  color: #ffd700;
+  text-decoration-color: #ffd700
+}
+
+.home {
+  width: 100%;
+  background: none;
+  text-decoration: none;
+}
+
+.active {
+  h1,
+  h2 {
+    color:#ffd700
   }
 }
