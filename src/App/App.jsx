@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CardComponents from '../Card-Components/CardComponents';
 import './App.scss';
 import {Route, NavLink } from "react-router-dom";
-import Home from '../Home/Home.jsx'
+// import Home from '../Home/Home.jsx'
 
 
 class App extends Component {

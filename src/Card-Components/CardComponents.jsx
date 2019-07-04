@@ -13,7 +13,7 @@ const CardComponents = ({group, addFavorite, page, crawl}) => {
     key={person[5]}
     addFavorite={addFavorite}
   />)})
-
+      console.log('crawl', crawl)
       console.log(group.length)
       console.log(page)
   return (
