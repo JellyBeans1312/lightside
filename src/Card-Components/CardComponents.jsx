@@ -16,7 +16,7 @@ const CardComponents = ({group, addFavorite, page}) => {
       console.log(group.length)
       console.log(page)
   return (
-    <section>
+    <section className='cardComponents'>
       {group.length !== 0 && cards}
       {group.length === 0 && page === 'favorites' 
         && <h2>You do not have any favorites</h2>

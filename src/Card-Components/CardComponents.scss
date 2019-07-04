@@ -1,8 +1,10 @@
 
-section {
+.cardComponents {
   display: flex;
   flex-wrap: wrap;
   h2 {
     color: white;
+    margin: auto;
+    margin-top: 50px;
   }
 }
