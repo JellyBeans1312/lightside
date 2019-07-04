@@ -25,6 +25,14 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({ film: data.results[randomNumber] }))
       .catch(err => console.log(err))
+
+    if (window.location.href === 'http://localhost:3000/people') {
+      this.getPeople()
+    } else if (window.location.href === 'http://localhost:3000/planets') {
+      this.getPlanets()
+    } else if (window.location.href === 'http://localhost:3000/vehicles') {
+      this.getVehicles()
+    }
   }
 
   // getHome = () => {
@@ -158,7 +166,6 @@ class App extends Component {
           component={() => <CardComponents 
             group={this.state.people} 
             addFavorite={this.handleFavorite}
-            page={this.state.page}
             crawl={this.state.film}
             />}
         />
@@ -167,7 +174,6 @@ class App extends Component {
           component={() => <CardComponents 
             group={this.state.people} 
             addFavorite={this.handleFavorite}
-            page={this.state.page}
             />}
         />
         <Route 
@@ -175,7 +181,6 @@ class App extends Component {
           component={() => <CardComponents 
             group={this.state.planets}
             addFavorite={this.handleFavorite}
-            page={this.state.page}
             />}
         />
         <Route 
@@ -183,7 +188,6 @@ class App extends Component {
           component={() => <CardComponents 
             group={this.state.vehicles}
             addFavorite={this.handleFavorite}
-            page={this.state.page}
             />}
         />
         <Route 
@@ -191,7 +195,6 @@ class App extends Component {
           component={() => <CardComponents 
             group={this.state.allFavorites}
             addFavorite={this.handleFavorite}
-            page={this.state.page}
             />}
         />
       </main>
