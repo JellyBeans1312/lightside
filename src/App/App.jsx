@@ -98,13 +98,13 @@ class App extends Component {
 
   handleFavorite = (prop) => {
       const favorites = this.state.isFavorite
-
       if(!favorites.includes(prop)) {
         this.setState({isFavorite: [...favorites ,prop]})
       } else {
         const unfavorite = favorites.filter(favorite => favorite !== prop)
         this.setState({isFavorite: unfavorite})
       }
+      
   }
 
   updateGroup = (string) => {
