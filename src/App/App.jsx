@@ -13,7 +13,7 @@ class App extends Component {
       people: [],
       vehicles: [],
       planets: [],
-      isFavorite: [],
+      allFavorites: [],
       isHidden: false,
       page: 'home'
     }
@@ -52,7 +52,9 @@ class App extends Component {
         `Gender: ${person.gender}`, 
         `Height: ${person.height}`, 
         `Eye Color: ${person.eye_color}`, 
-        person.created]
+        person.created,
+        false
+      ]
         return info
       })}))
       .catch(err => console.log(err))
@@ -69,7 +71,8 @@ class App extends Component {
           `Class: ${vehicle.vehicle_class}`,
           `Passengers: ${vehicle.passengers}`,
           null,
-          vehicle.created
+          vehicle.created,
+          false
         ]
         return info
       })}))
@@ -87,7 +90,8 @@ class App extends Component {
           `Diameter: ${planet.diameter}`,
           `Population: ${planet.population}`,
           null,
-          planet.created
+          planet.created,
+          false
         ]
         return info
       })}))
@@ -97,12 +101,14 @@ class App extends Component {
   
 
   handleFavorite = (prop) => {
-      const favorites = this.state.isFavorite
+      const favorites = this.state.allFavorites;
       if(!favorites.includes(prop)) {
-        this.setState({isFavorite: [...favorites ,prop]})
+        prop[6] = !prop[6]
+        this.setState({allFavorites: [...favorites ,prop]})
       } else {
+        prop[6] = !prop[6]
         const unfavorite = favorites.filter(favorite => favorite !== prop)
-        this.setState({isFavorite: unfavorite})
+        this.setState({allFavorites: unfavorite})
       }
       
   }
@@ -112,7 +118,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.isFavorite)
     return (
       <main className="App">
         {/* {!this.state.isHidden && <Opening film={this.state.film}/>} */}
@@ -151,7 +156,7 @@ class App extends Component {
               className='nav link' 
               onClick={() => this.updateGroup('favorites')}
               > 
-                <h2>FAVORITES <span>{this.state.isFavorite.length}</span></h2>
+                <h2>FAVORITES <span>{this.state.allFavorites.length}</span></h2>
             </NavLink>
           </section>
         </nav>
@@ -183,7 +188,7 @@ class App extends Component {
         <Route 
           exact path='/favorites' 
           component={() => <CardComponents 
-            group={this.state.isFavorite}
+            group={this.state.allFavorites}
             addFavorite={this.handleFavorite}
             page={this.state.page}
             />}

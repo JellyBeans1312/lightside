@@ -2,19 +2,18 @@ import React from 'react';
 import Card from '../Card/Card.jsx'
 import './CardComponents.scss'
 
-const CardComponents = ({group, addFavorite, page}) => {
+const CardComponents = ({group, addFavorite, page, isFavorite}) => {
 
   // console.log(group)
   const cards = group.map(person => {
+
     return (<Card 
     props={person} 
     id={person[5]} 
     key={person[5]}
     addFavorite={addFavorite}
+    isFavorite={isFavorite}
   />)})
-
-      console.log(group.length)
-      console.log(page)
   return (
     <section>
       {group.length !== 0 && cards}
