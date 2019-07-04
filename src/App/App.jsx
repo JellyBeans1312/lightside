@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import CardComponents from '../Card-Components/CardComponents';
 import './App.scss';
 import {Route, NavLink } from "react-router-dom";
-// import Home from '../Home/Home.jsx'
 
 
 class App extends Component {
@@ -34,15 +33,6 @@ class App extends Component {
       this.getVehicles()
     }
   }
-
-  // getHome = () => {
-  //   this.setState({page:'home'})
-  //   const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
-  //   fetch('https://swapi.co/api/films')
-  //     .then(response => response.json())
-  //     .then(data => this.setState({ film: data.results[randomNumber] }))
-  //     .catch(err => console.log(err))
-  // }
 
   getPeople = () => {
     fetch('https://swapi.co/api/people/')
@@ -100,7 +90,6 @@ class App extends Component {
       .catch(err => console.log(err))
       this.updateGroup('planets')
     }
-  
 
   handleFavorite = (prop) => {
       const favorites = this.state.allFavorites;
@@ -112,13 +101,12 @@ class App extends Component {
         const unfavorite = favorites.filter(favorite => favorite !== prop)
         this.setState({allFavorites: unfavorite})
       }
-
   }
 
   updateGroup = (string) => {
     this.setState({page: string})
   }
-
+  
   render() {
     return (
       <main className="App">
@@ -167,35 +155,35 @@ class App extends Component {
             group={this.state.people} 
             addFavorite={this.handleFavorite}
             crawl={this.state.film}
-            />}
+          />}
         />
         <Route 
           exact path='/people' 
           component={() => <CardComponents 
             group={this.state.people} 
             addFavorite={this.handleFavorite}
-            />}
+          />}
         />
         <Route 
           exact path='/planets' 
           component={() => <CardComponents 
             group={this.state.planets}
             addFavorite={this.handleFavorite}
-            />}
+          />}
         />
         <Route 
           exact path='/vehicles' 
           component={() => <CardComponents 
             group={this.state.vehicles}
             addFavorite={this.handleFavorite}
-            />}
+          />}
         />
         <Route 
           exact path='/favorites' 
           component={() => <CardComponents 
             group={this.state.allFavorites}
             addFavorite={this.handleFavorite}
-            />}
+          />}
         />
       </main>
     );

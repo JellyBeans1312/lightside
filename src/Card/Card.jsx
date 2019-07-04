@@ -1,21 +1,19 @@
 import React from 'react';
 import './Card.scss'
 import green from '../images/green-lightsaber.png'
-import red from '../images/red-lightsabers.jpg'
+import red from '../images/red-lightsabers.png'
 
 const Card = ({props, addFavorite}) => {
 
-  const favorite = (<img src={green} className='favorite-btn' alt='stuff'/>)
-  const unfavorite = (<img src={red} className='unfavorite-btn' alt='stuff'/>)
+  const favorite = (<img src={green} className='favorite-btn' alt='stuff' onClick={() => addFavorite(props)}/>)
+  const unfavorite = (<img src={red} className='unfavorite-btn' alt='stuff' onClick={() => addFavorite(props)}/>)
 
   return (
     <article>
       <div>
         <p>{props[0]}</p>
-        <button onClick={() => addFavorite(props)}>
           {props[6] === false && unfavorite}
           {props[6] === true && favorite} 
-        </button>
       </div>
       <p>{props[1]}</p>
       <p>{props[2]}</p>
