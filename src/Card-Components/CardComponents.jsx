@@ -17,19 +17,22 @@ const CardComponents = ({group, addFavorite, crawl}) => {
 
   return (
     <section className='cardComponents'>
+
       {page === 'http://localhost:3000/' && crawl.title === '' && loadingIcon}
 
       {page === 'http://localhost:3000/' && crawl.title !== '' && <Home crawl={crawl}/>}
 
       {page !== 'http://localhost:3000/' 
         && page !== 'http://localhost:3000/favorites' 
-        && group.length === 0 && loadingIcon}
+        && group.length === 0 && loadingIcon
+      }
 
       {group.length !== 0 && cards}
 
       {group.length === 0 && page === 'http://localhost:3000/favorites' 
         && <h2>You do not have any favorites</h2>
       }
+
     </section>
   )
 }
