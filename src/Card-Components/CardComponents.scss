@@ -1,8 +1,15 @@
 
-section {
+.cardComponents {
+  height: 85%;
   display: flex;
   flex-wrap: wrap;
   h2 {
     color: white;
+    margin: auto;
+    margin-top: 50px;
+  }
+  .loading-gif {
+    margin: auto;
+    height: 40%;
   }
 }

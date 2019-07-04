@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CardComponents from '../Card-Components/CardComponents';
 import './App.scss';
-import Opening from '../Opening/Opening';
 import {Route, NavLink } from "react-router-dom";
 
 
@@ -9,11 +8,11 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      film: [],
+      film: {title:'', opening_crawl:'', release_date:''},
       people: [],
       vehicles: [],
       planets: [],
-      isFavorite: [],
+      allFavorites: [],
       isHidden: false,
       page: 'home'
     }
@@ -21,25 +20,18 @@ class App extends Component {
   
   componentDidMount = () => {
     const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
-    setTimeout(() => {
-      this.setState({ isHidden: true })
-    }, 30000);
     fetch('https://swapi.co/api/films')
       .then(response => response.json())
       .then(data => this.setState({ film: data.results[randomNumber] }))
       .catch(err => console.log(err))
-  }
 
-  getHome = () => {
-    this.setState({page:'home'})
-    const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
-    setTimeout(() => {
-      this.setState({ isHidden: true })
-    }, 30000);
-    fetch('https://swapi.co/api/films')
-      .then(response => response.json())
-      .then(data => this.setState({ film: data.results[randomNumber] }))
-      .catch(err => console.log(err))
+    if (window.location.href === 'http://localhost:3000/people') {
+      this.getPeople()
+    } else if (window.location.href === 'http://localhost:3000/planets') {
+      this.getPlanets()
+    } else if (window.location.href === 'http://localhost:3000/vehicles') {
+      this.getVehicles()
+    }
   }
 
   getPeople = () => {
@@ -52,7 +44,9 @@ class App extends Component {
         `Gender: ${person.gender}`, 
         `Height: ${person.height}`, 
         `Eye Color: ${person.eye_color}`, 
-        person.created]
+        person.created,
+        false
+      ]
         return info
       })}))
       .catch(err => console.log(err))
@@ -69,7 +63,8 @@ class App extends Component {
           `Class: ${vehicle.vehicle_class}`,
           `Passengers: ${vehicle.passengers}`,
           null,
-          vehicle.created
+          vehicle.created,
+          false
         ]
         return info
       })}))
@@ -87,38 +82,37 @@ class App extends Component {
           `Diameter: ${planet.diameter}`,
           `Population: ${planet.population}`,
           null,
-          planet.created
+          planet.created,
+          false
         ]
         return info
       })}))
       .catch(err => console.log(err))
       this.updateGroup('planets')
     }
-  
 
   handleFavorite = (prop) => {
-      const favorites = this.state.isFavorite
+      const favorites = this.state.allFavorites;
       if(!favorites.includes(prop)) {
-        this.setState({isFavorite: [...favorites ,prop]})
+        prop[6] = !prop[6]
+        this.setState({allFavorites: [...favorites ,prop]})
       } else {
+        prop[6] = !prop[6]
         const unfavorite = favorites.filter(favorite => favorite !== prop)
-        this.setState({isFavorite: unfavorite})
+        this.setState({allFavorites: unfavorite})
       }
-      
   }
 
   updateGroup = (string) => {
     this.setState({page: string})
   }
-
+  
   render() {
-    console.log(this.state.isFavorite)
     return (
       <main className="App">
-        {/* {!this.state.isHidden && <Opening film={this.state.film}/>} */}
         <nav>
             <NavLink 
-              to={'/home'} 
+              to={'/'} 
               className='nav home' 
               onClick={() => this.updateGroup('home')}
               > 
@@ -151,42 +145,45 @@ class App extends Component {
               className='nav link' 
               onClick={() => this.updateGroup('favorites')}
               > 
-                <h2>FAVORITES <span>{this.state.isFavorite.length}</span></h2>
+                <h2>FAVORITES <span>{this.state.allFavorites.length}</span></h2>
             </NavLink>
           </section>
         </nav>
-
+        <Route 
+          exact path='/' 
+          component={() => <CardComponents 
+            group={this.state.people} 
+            addFavorite={this.handleFavorite}
+            crawl={this.state.film}
+          />}
+        />
         <Route 
           exact path='/people' 
           component={() => <CardComponents 
             group={this.state.people} 
             addFavorite={this.handleFavorite}
-            page={this.state.page}
-            />}
+          />}
         />
         <Route 
           exact path='/planets' 
           component={() => <CardComponents 
             group={this.state.planets}
             addFavorite={this.handleFavorite}
-            page={this.state.page}
-            />}
+          />}
         />
         <Route 
           exact path='/vehicles' 
           component={() => <CardComponents 
             group={this.state.vehicles}
             addFavorite={this.handleFavorite}
-            page={this.state.page}
-            />}
+          />}
         />
         <Route 
           exact path='/favorites' 
           component={() => <CardComponents 
-            group={this.state.isFavorite}
+            group={this.state.allFavorites}
             addFavorite={this.handleFavorite}
-            page={this.state.page}
-            />}
+          />}
         />
       </main>
     );
