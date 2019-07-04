@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import CardComponents from '../Card-Components/CardComponents';
 import './App.scss';
-import Opening from '../Opening/Opening';
 import {Route, NavLink } from "react-router-dom";
+import Home from '../Home/Home.jsx'
 
 
 class App extends Component {
@@ -21,9 +21,6 @@ class App extends Component {
   
   componentDidMount = () => {
     const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
-    setTimeout(() => {
-      this.setState({ isHidden: true })
-    }, 30000);
     fetch('https://swapi.co/api/films')
       .then(response => response.json())
       .then(data => this.setState({ film: data.results[randomNumber] }))
@@ -33,9 +30,6 @@ class App extends Component {
   getHome = () => {
     this.setState({page:'home'})
     const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
-    setTimeout(() => {
-      this.setState({ isHidden: true })
-    }, 30000);
     fetch('https://swapi.co/api/films')
       .then(response => response.json())
       .then(data => this.setState({ film: data.results[randomNumber] }))
@@ -104,7 +98,7 @@ class App extends Component {
         const unfavorite = favorites.filter(favorite => favorite !== prop)
         this.setState({isFavorite: unfavorite})
       }
-      
+
   }
 
   updateGroup = (string) => {
@@ -115,10 +109,9 @@ class App extends Component {
     console.log(this.state.isFavorite)
     return (
       <main className="App">
-        {/* {!this.state.isHidden && <Opening film={this.state.film}/>} */}
         <nav>
             <NavLink 
-              to={'/home'} 
+              to={'/'} 
               className='nav home' 
               onClick={() => this.updateGroup('home')}
               > 
@@ -155,7 +148,15 @@ class App extends Component {
             </NavLink>
           </section>
         </nav>
-
+        <Route 
+          exact path='/' 
+          component={() => <CardComponents 
+            group={this.state.people} 
+            addFavorite={this.handleFavorite}
+            page={this.state.page}
+            crawl={this.state.film}
+            />}
+        />
         <Route 
           exact path='/people' 
           component={() => <CardComponents 
