@@ -3,7 +3,6 @@ import './Home.scss';
 
 
 const Home = ({crawl}) => {
-  console.log(crawl)
   return(
 
     <section className='home'>
