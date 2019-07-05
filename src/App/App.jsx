@@ -13,8 +13,7 @@ class App extends Component {
       vehicles: [],
       planets: [],
       allFavorites: [],
-      isHidden: false,
-      page: 'home'
+      isHidden: false
     }
   }
   
@@ -50,7 +49,6 @@ class App extends Component {
         return info
       })}))
       .catch(err => console.log(err))
-      this.updateGroup('people')
     }
 
     getVehicles = () => {
@@ -69,7 +67,6 @@ class App extends Component {
         return info
       })}))
       .catch(err => console.log(err))
-      this.updateGroup('vehicles')
     }
     
     getPlanets = () => {
@@ -88,7 +85,6 @@ class App extends Component {
         return info
       })}))
       .catch(err => console.log(err))
-      this.updateGroup('planets')
     }
 
   handleFavorite = (prop) => {
@@ -103,10 +99,6 @@ class App extends Component {
       }
   }
 
-  updateGroup = (string) => {
-    this.setState({page: string})
-  }
-  
   render() {
     return (
       <main className="App">
@@ -114,7 +106,6 @@ class App extends Component {
             <NavLink 
               to={'/'} 
               className='nav home' 
-              onClick={() => this.updateGroup('home')}
               > 
               <h1>LIGHT SIDE</h1>
             </NavLink>
@@ -143,7 +134,6 @@ class App extends Component {
             <NavLink 
               to='/favorites' 
               className='nav link' 
-              onClick={() => this.updateGroup('favorites')}
               > 
                 <h2>FAVORITES <span>{this.state.allFavorites.length}</span></h2>
             </NavLink>
