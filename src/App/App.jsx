@@ -33,9 +33,9 @@ class App extends Component {
 
   showCrawl = () => {
     console.log(this.state.film.title)
-    if(this.state.film.title === '') {
+    this.setState({film: {title:'', opening_crawl:'', release_date:''}})
       Call.fetchCrawl(this.getCrawl)
-    }
+
   }
 
   getCrawl = (crawl) => {
