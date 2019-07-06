@@ -3,12 +3,13 @@ import './Nav.scss';
 import {NavLink} from 'react-router-dom';
 
 
-const Nav = ({getPeople, getPlanets, getVehicles, allFavorites}) => {
+const Nav = ({getCrawl, getPeople, getPlanets, getVehicles, allFavorites}) => {
   return (
     <nav>
             <NavLink 
               to={'/'} 
               className='nav home' 
+              onClick={getCrawl}
               > 
               <h1>LIGHT SIDE</h1>
             </NavLink>

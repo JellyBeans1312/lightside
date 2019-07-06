@@ -119,6 +119,7 @@ class App extends Component {
     return (
       <main className="App">
         <Nav 
+          getCrawl={() => this.getCrawl(this.state.film)}
           getPeople={this.getPeople} 
           getPlanets={this.getPlanets}
           getVehicles={this.getVehicles}
