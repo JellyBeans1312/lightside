@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import CardComponents from '../Card-Components/CardComponents';
 import './App.scss';
-import {Route, NavLink } from "react-router-dom";
+import {Route} from "react-router-dom";
 import Nav from '../Nav/Nav.jsx'
+import Call from '../Fetch/FetchCall'
 
 
 class App extends Component {
@@ -19,40 +20,51 @@ class App extends Component {
   }
   
   componentDidMount = () => {
-    const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
-    fetch('https://swapi.co/api/films')
-      .then(response => response.json())
-      .then(data => this.setState({ film: data.results[randomNumber] }))
-      .catch(err => console.log(err))
+    // const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
+    // fetch('https://swapi.co/api/films')
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ film: data.results[randomNumber] }))
+    //   .catch(err => console.log(err))
 
-    if (window.location.href === 'http://localhost:3000/people') {
-      this.getPeople()
+    if (window.location.href === 'http://localhost:3000/people' && this.state.people.length === 0) {
+      console.log(this.state.people.length)
+      Call.fetchPeople(this.getPeople)
     } else if (window.location.href === 'http://localhost:3000/planets') {
       this.getPlanets()
     } else if (window.location.href === 'http://localhost:3000/vehicles') {
       this.getVehicles()
+    } else if (window.location.href === 'http://localhost:3000/') {
+      Call.fetchCrawl(this.getCrawl)
     }
   }
 
-  getPeople = () => {
-    console.log('RUNNING FETCH')
-     return fetch('https://swapi.co/api/people/')
-    .then(response => response.json())
-    // .then(data => console.log(data))
-    .then(data => this.setState({people: data.results.map(person => {
+  getCrawl = (crawl) => {
+    console.log('getting crawl')
+    this.setState({film: crawl})
+  }
+
+
+
+  getPeople = (fetchData) => {
+    console.log('getting people')
+    let people = fetchData.map(person => {
       const info = [
-        person.name, 
-        `Birth Year: ${person.birth_year}`, 
-        `Gender: ${person.gender}`, 
-        `Height: ${person.height}`, 
-        `Eye Color: ${person.eye_color}`, 
-        person.created,
-        false
-      ]
-      console.log(info)
-        return info
-      })}))
-      .catch(err => console.log(err))
+            person.name, 
+            `Birth Year: ${person.birth_year}`, 
+            `Gender: ${person.gender}`, 
+            `Height: ${person.height}`, 
+            `Eye Color: ${person.eye_color}`, 
+            person.created,
+            false
+          ]
+          return info
+    })
+    this.setPeople(people)
+    return people
+    }
+
+    setPeople = (people) => {
+      this.setState({people: people})
     }
 
     getVehicles = () => {
