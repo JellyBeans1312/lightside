@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CardComponents from '../Card-Components/CardComponents';
 import './App.scss';
-import {Route} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import Nav from '../Nav/Nav.jsx'
 import Call from '../Fetch/FetchCall'
 
@@ -32,14 +32,12 @@ class App extends Component {
   }
 
   showCrawl = () => {
-    console.log(this.state.film.title)
     this.setState({film: {title:'', opening_crawl:'', release_date:''}})
       Call.fetchCrawl(this.getCrawl)
 
   }
 
   getCrawl = (crawl) => {
-    console.log('getting crawl')
     this.setState({film: crawl})
   }
 
@@ -50,7 +48,6 @@ class App extends Component {
   }
 
   getPeople = (fetchData) => {
-    console.log('getting people')
     const people = fetchData.map(person => {
       const info = [
             person.name, 
@@ -72,7 +69,6 @@ class App extends Component {
     }
 
     showVehicles = () => {
-      console.log('show vehicles')
       if(this.state.vehicles.length === 0) {
         Call.fetchVehicles(this.getVehicles)
       }
@@ -147,6 +143,7 @@ class App extends Component {
           getVehicles={this.showVehicles}
           allFavorites={this.state.allFavorites}
           />
+        <Switch>
         <Route 
           exact path='/' 
           component={() => <CardComponents 
@@ -183,6 +180,7 @@ class App extends Component {
             addFavorite={this.handleFavorite}
           />}
         />
+        </Switch>
       </main>
     );
   }

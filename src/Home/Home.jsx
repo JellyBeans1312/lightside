@@ -3,8 +3,8 @@ import './Home.scss';
 
 
 const Home = ({crawl}) => {
-  return(
 
+  return(
     <section className='home'>
       <div className="fade"></div>
       <section className="star-wars">
@@ -17,6 +17,7 @@ const Home = ({crawl}) => {
         </div>
       </section>
     </section>
+    
   )
 }
 
