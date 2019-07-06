@@ -91,16 +91,21 @@ class App extends Component {
         return info
       })
       this.setVehicles(vehicles)
+      return vehicles
     }
 
     setVehicles = (vehicles) => {
       this.setState({vehicles: vehicles})
     }
+
+    showPlanets = () => {
+      if(this.state.planets.length === 0) {
+        Call.fetchPlanets(this.getPlanets)
+      }
+    }
     
-    getPlanets = () => {
-      fetch('https://swapi.co/api/planets')
-      .then(response => response.json())
-      .then(data => this.setState({planets: data.results.map(planet => {
+    getPlanets = (fetchData) => {
+      const planets = fetchData.map(planet => {
         const info = [
           planet.name,
           `Terrain: ${planet.terrain}`,
@@ -111,8 +116,12 @@ class App extends Component {
           false
         ]
         return info
-      })}))
-      .catch(err => console.log(err))
+      })
+      this.setPlanets(planets)
+    }
+
+    setPlanets = (planets) => {
+      this.setState({planets: planets})
     }
 
   handleFavorite = (prop) => {
@@ -133,7 +142,7 @@ class App extends Component {
         <Nav 
           getCrawl={() => this.getCrawl(this.state.film)}
           getPeople={this.showPeople} 
-          getPlanets={this.getPlanets}
+          getPlanets={this.showPlanets}
           getVehicles={this.showVehicles}
           allFavorites={this.state.allFavorites}
           />
