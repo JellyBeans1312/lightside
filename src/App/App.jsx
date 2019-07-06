@@ -34,8 +34,10 @@ class App extends Component {
   }
 
   getPeople = () => {
-    fetch('https://swapi.co/api/people/')
+    console.log('RUNNING FETCH')
+     return fetch('https://swapi.co/api/people/')
     .then(response => response.json())
+    // .then(data => console.log(data))
     .then(data => this.setState({people: data.results.map(person => {
       const info = [
         person.name, 
@@ -46,6 +48,7 @@ class App extends Component {
         person.created,
         false
       ]
+      console.log(info)
         return info
       })}))
       .catch(err => console.log(err))
