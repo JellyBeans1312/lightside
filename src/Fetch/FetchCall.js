@@ -22,12 +22,22 @@ const Call = {
       .catch(err => console.log(err))
   },
 
-  fetchPlanets() {
-
+  fetchPlanets(getPlanets) {
+    console.log('fetching planets')
+    return fetch('https://swapi.co/api/planets/')
+     .then(response => response.json())
+   // .then(data => console.log(data))
+     .then(data => getPlanets(data.results))
+     .catch(err => console.log(err))
   },
 
-  fetchVehicles() {
-
+  fetchVehicles(getVehicles) {
+    console.log('fetching vehicles')
+    return fetch('https://swapi.co/api/vehicles/')
+     .then(response => response.json())
+   // .then(data => console.log(data))
+     .then(data => getVehicles(data.results))
+     .catch(err => console.log(err))
   }
 
 }

@@ -31,7 +31,7 @@ class App extends Component {
     } else if (window.location.href === 'http://localhost:3000/planets') {
       this.getPlanets()
     } else if (window.location.href === 'http://localhost:3000/vehicles') {
-      this.getVehicles()
+      this.showVehicles()
     } else if (window.location.href === 'http://localhost:3000/') {
       Call.fetchCrawl(this.getCrawl)
     }
@@ -50,7 +50,7 @@ class App extends Component {
 
   getPeople = (fetchData) => {
     console.log('getting people')
-    let people = fetchData.map(person => {
+    const people = fetchData.map(person => {
       const info = [
             person.name, 
             `Birth Year: ${person.birth_year}`, 
@@ -70,10 +70,15 @@ class App extends Component {
       this.setState({people: people})
     }
 
-    getVehicles = () => {
-      fetch('https://swapi.co/api/vehicles')
-      .then(response => response.json())
-      .then(data => this.setState({vehicles: data.results.map(vehicle => {
+    showVehicles = () => {
+      console.log('show vehicles')
+      if(this.state.vehicles.length === 0) {
+        Call.fetchVehicles(this.getVehicles)
+      }
+    }
+
+    getVehicles = (fetchData) => {
+      const vehicles = fetchData.map(vehicle => {
         const info = [
           vehicle.name,
           `Model: ${vehicle.model}`,
@@ -84,8 +89,12 @@ class App extends Component {
           false
         ]
         return info
-      })}))
-      .catch(err => console.log(err))
+      })
+      this.setVehicles(vehicles)
+    }
+
+    setVehicles = (vehicles) => {
+      this.setState({vehicles: vehicles})
     }
     
     getPlanets = () => {
@@ -125,7 +134,7 @@ class App extends Component {
           getCrawl={() => this.getCrawl(this.state.film)}
           getPeople={this.showPeople} 
           getPlanets={this.getPlanets}
-          getVehicles={this.getVehicles}
+          getVehicles={this.showVehicles}
           allFavorites={this.state.allFavorites}
           />
         <Route 
