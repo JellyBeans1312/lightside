@@ -20,12 +20,6 @@ class App extends Component {
   }
   
   componentDidMount = () => {
-    // const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
-    // fetch('https://swapi.co/api/films')
-    //   .then(response => response.json())
-    //   .then(data => this.setState({ film: data.results[randomNumber] }))
-    //   .catch(err => console.log(err))
-
     if (window.location.href === 'http://localhost:3000/people') {
       this.showPeople()
     } else if (window.location.href === 'http://localhost:3000/planets') {
@@ -33,6 +27,13 @@ class App extends Component {
     } else if (window.location.href === 'http://localhost:3000/vehicles') {
       this.showVehicles()
     } else if (window.location.href === 'http://localhost:3000/') {
+      this.showCrawl()
+    }
+  }
+
+  showCrawl = () => {
+    console.log(this.state.film.title)
+    if(this.state.film.title === '') {
       Call.fetchCrawl(this.getCrawl)
     }
   }
@@ -140,7 +141,7 @@ class App extends Component {
     return (
       <main className="App">
         <Nav 
-          getCrawl={() => this.getCrawl(this.state.film)}
+          getCrawl={this.showCrawl}
           getPeople={this.showPeople} 
           getPlanets={this.showPlanets}
           getVehicles={this.showVehicles}
