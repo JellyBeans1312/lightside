@@ -26,9 +26,8 @@ class App extends Component {
     //   .then(data => this.setState({ film: data.results[randomNumber] }))
     //   .catch(err => console.log(err))
 
-    if (window.location.href === 'http://localhost:3000/people' && this.state.people.length === 0) {
-      console.log(this.state.people.length)
-      Call.fetchPeople(this.getPeople)
+    if (window.location.href === 'http://localhost:3000/people') {
+      this.showPeople()
     } else if (window.location.href === 'http://localhost:3000/planets') {
       this.getPlanets()
     } else if (window.location.href === 'http://localhost:3000/vehicles') {
@@ -43,7 +42,11 @@ class App extends Component {
     this.setState({film: crawl})
   }
 
-
+  showPeople = () => {
+    if(this.state.people.length === 0) {
+      Call.fetchPeople(this.getPeople)
+    }
+  }
 
   getPeople = (fetchData) => {
     console.log('getting people')
@@ -120,7 +123,7 @@ class App extends Component {
       <main className="App">
         <Nav 
           getCrawl={() => this.getCrawl(this.state.film)}
-          getPeople={this.getPeople} 
+          getPeople={this.showPeople} 
           getPlanets={this.getPlanets}
           getVehicles={this.getVehicles}
           allFavorites={this.state.allFavorites}
