@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CardComponents from '../Card-Components/CardComponents';
 import './App.scss';
-import {Route, Switch} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Nav from '../Nav/Nav.jsx'
 import Call from '../Fetch/FetchCall'
 
@@ -34,7 +34,6 @@ class App extends Component {
   showCrawl = () => {
     this.setState({film: {title:'', opening_crawl:'', release_date:''}})
       Call.fetchCrawl(this.getCrawl)
-
   }
 
   getCrawl = (crawl) => {
@@ -50,29 +49,29 @@ class App extends Component {
   getPeople = (fetchData) => {
     const people = fetchData.map(person => {
       const info = [
-            person.name, 
-            `Birth Year: ${person.birth_year}`, 
-            `Gender: ${person.gender}`, 
-            `Height: ${person.height}`, 
-            `Eye Color: ${person.eye_color}`, 
-            person.created,
-            false
-          ]
-          return info
+        person.name, 
+        `Birth Year: ${person.birth_year}`, 
+        `Gender: ${person.gender}`, 
+        `Height: ${person.height}`, 
+        `Eye Color: ${person.eye_color}`, 
+        person.created,
+        false
+      ]
+      return info
     })
     this.setPeople(people)
     return people
-    }
+  }
 
-    setPeople = (people) => {
-      this.setState({people: people})
-    }
+  setPeople = (people) => {
+    this.setState({people: people})
+  }
 
-    showVehicles = () => {
-      if(this.state.vehicles.length === 0) {
-        Call.fetchVehicles(this.getVehicles)
-      }
+  showVehicles = () => {
+    if(this.state.vehicles.length === 0) {
+      Call.fetchVehicles(this.getVehicles)
     }
+  }
 
     getVehicles = (fetchData) => {
       const vehicles = fetchData.map(vehicle => {
@@ -115,6 +114,7 @@ class App extends Component {
         return info
       })
       this.setPlanets(planets)
+      return planets
     }
 
     setPlanets = (planets) => {
@@ -142,8 +142,7 @@ class App extends Component {
           getPlanets={this.showPlanets}
           getVehicles={this.showVehicles}
           allFavorites={this.state.allFavorites}
-          />
-        <Switch>
+        />
         <Route 
           exact path='/' 
           component={() => <CardComponents 
@@ -180,7 +179,6 @@ class App extends Component {
             addFavorite={this.handleFavorite}
           />}
         />
-        </Switch>
       </main>
     );
   }
