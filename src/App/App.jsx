@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CardComponents from '../Card-Components/CardComponents';
 import './App.scss';
 import {Route, NavLink } from "react-router-dom";
+import Nav from '../Nav/Nav.jsx'
 
 
 class App extends Component {
@@ -105,43 +106,12 @@ class App extends Component {
   render() {
     return (
       <main className="App">
-        <nav>
-            <NavLink 
-              to={'/'} 
-              className='nav home' 
-              > 
-              <h1>LIGHT SIDE</h1>
-            </NavLink>
-          <section>
-            <NavLink 
-              to='/people' 
-              className='nav link' 
-              onClick={this.getPeople}
-              > 
-                <h2>PEOPLE</h2> 
-            </NavLink>
-            <NavLink 
-              to='/planets' 
-              className='nav link' 
-              onClick={this.getPlanets}
-              > 
-                <h2>PLANETS</h2> 
-            </NavLink>
-            <NavLink 
-              to='/vehicles' 
-              className='nav link' 
-              onClick={() => this.getVehicles()}
-              > 
-                <h2>VEHICLES</h2> 
-            </NavLink>
-            <NavLink 
-              to='/favorites' 
-              className='nav link' 
-              > 
-                <h2>FAVORITES <span>{this.state.allFavorites.length}</span></h2>
-            </NavLink>
-          </section>
-        </nav>
+        <Nav 
+          getPeople={this.getPeople} 
+          getPlanets={this.getPlanets}
+          getVehicles={this.getVehicles}
+          allFavorites={this.state.allFavorites}
+          />
         <Route 
           exact path='/' 
           component={() => <CardComponents 
