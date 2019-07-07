@@ -74,5 +74,9 @@ describe('App', () => {
     expect(fetch).toHaveBeenCalled()
   })
 
+  it('cleanVehicles should filter the returned fetch data', () => {
+    expect(wrapper.instance().cleanVehicles([AppData.unfilteredVehicles()]))
+      .toEqual([AppData.filteredVehicles()])
+  })
 
 })

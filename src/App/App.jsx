@@ -69,11 +69,11 @@ class App extends Component {
 
   showVehicles = () => {
     if(this.state.vehicles.length === 0) {
-      Call.fetchVehicles(this.getVehicles)
+      Call.fetchVehicles(this.cleanVehicles)
     }
   }
 
-    getVehicles = (fetchData) => {
+    cleanVehicles = (fetchData) => {
       console.log(fetchData)
       const vehicles = fetchData.map(vehicle => {
         const info = [
@@ -98,11 +98,11 @@ class App extends Component {
 
     showPlanets = () => {
       if(this.state.planets.length === 0) {
-        Call.fetchPlanets(this.getPlanets)
+        Call.fetchPlanets(this.cleanPlanets)
       }
     }
     
-    getPlanets = (fetchData) => {
+    cleanPlanets = (fetchData) => {
       console.log(fetchData)
       const planets = fetchData.map(planet => {
         const info = [
