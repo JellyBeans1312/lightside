@@ -79,4 +79,30 @@ describe('App', () => {
       .toEqual([AppData.filteredVehicles()])
   })
 
+  it('setVehicles should setState', () => {
+    expect(wrapper.state('vehicles')).toEqual([])
+    wrapper.instance().setVehicles([AppData.filteredVehicles()])
+    expect(wrapper.state('vehicles')).toEqual([AppData.filteredVehicles()])
+  })
+
+  it('showPlanets should call fetchPlanets if vehicle length is 0', () => {
+    const fetch = jest.spyOn(Call, 'fetchPlanets')
+    wrapper.setState({planets : [1]})
+    expect(fetch).not.toHaveBeenCalled()
+    wrapper.setState({planets : []})
+    wrapper.instance().showPlanets()
+    expect(fetch).toHaveBeenCalled()
+  })
+
+  it('cleanPlanets should filter the returned fetch data', () => {
+    expect(wrapper.instance().cleanPlanets([AppData.unfilteredPlanets()]))
+      .toEqual([AppData.filteredPlanets()])
+  })
+
+  it('setPlanets should setState', () => {
+    expect(wrapper.state('planets')).toEqual([])
+    wrapper.instance().setPlanets([AppData.filteredPlanets()])
+    expect(wrapper.state('planets')).toEqual([AppData.filteredPlanets()])
+  })
+
 })
