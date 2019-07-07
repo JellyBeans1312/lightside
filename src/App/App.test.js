@@ -45,8 +45,9 @@ describe('App', () => {
     expect(wrapper.state('film')).toEqual({title:'Nathan', opening_crawl:'Nathan', release_date:'Nathan'})
   })
 
-  it('showPeople should call fetchPeople if no people are loaded', () => {
+  it('showPeople should call fetchPeople if people length is 0', () => {
     const fetch = jest.spyOn(Call, 'fetchPeople')
+    wrapper.setState({people : [1]})
     expect(fetch).not.toHaveBeenCalled()
     wrapper.setState({people : []})
     wrapper.instance().showPeople()
@@ -64,6 +65,14 @@ describe('App', () => {
     expect(wrapper.state('people')).toEqual([AppData.filteredPeople()])
   })
 
+  it('showVehicles should call fetchVehicles if vehicle length is 0', () => {
+    const fetch = jest.spyOn(Call, 'fetchVehicles')
+    wrapper.setState({vehicles : [1]})
+    expect(fetch).not.toHaveBeenCalled()
+    wrapper.setState({vehicles : []})
+    wrapper.instance().showVehicles()
+    expect(fetch).toHaveBeenCalled()
+  })
 
 
 })
