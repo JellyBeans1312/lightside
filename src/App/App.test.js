@@ -56,7 +56,12 @@ describe('App', () => {
   it('cleanPeople should filter the returned fetch data', () => {
     expect(wrapper.instance().cleanPeople([AppData.unfilteredPeople()]))
       .toEqual([AppData.filteredPeople()])
+  })
 
+  it('setPeople should setState', () => {
+    expect(wrapper.state('people')).toEqual([])
+    wrapper.instance().setPeople([AppData.filteredPeople()])
+    expect(wrapper.state('people')).toEqual([AppData.filteredPeople()])
   })
 
 

@@ -47,7 +47,6 @@ class App extends Component {
   }
 
   cleanPeople = (fetchData) => {
-    console.log(fetchData)
     const people = fetchData.map(person => {
       const info = [
         person.name, 
@@ -61,7 +60,6 @@ class App extends Component {
       return info
     })
     this.setPeople(people)
-    console.log(people)
     return people
   }
 
@@ -76,6 +74,7 @@ class App extends Component {
   }
 
     getVehicles = (fetchData) => {
+      console.log(fetchData)
       const vehicles = fetchData.map(vehicle => {
         const info = [
           vehicle.name,
@@ -89,6 +88,7 @@ class App extends Component {
         return info
       })
       this.setVehicles(vehicles)
+      console.log(vehicles)
       return vehicles
     }
 
@@ -103,6 +103,7 @@ class App extends Component {
     }
     
     getPlanets = (fetchData) => {
+      console.log(fetchData)
       const planets = fetchData.map(planet => {
         const info = [
           planet.name,
@@ -116,6 +117,7 @@ class App extends Component {
         return info
       })
       this.setPlanets(planets)
+      console.log(planets)
       return planets
     }
 
