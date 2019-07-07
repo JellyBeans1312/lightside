@@ -42,11 +42,12 @@ class App extends Component {
 
   showPeople = () => {
     if(this.state.people.length === 0) {
-      Call.fetchPeople(this.getPeople)
+      Call.fetchPeople(this.cleanPeople)
     }
   }
 
-  getPeople = (fetchData) => {
+  cleanPeople = (fetchData) => {
+    console.log(fetchData)
     const people = fetchData.map(person => {
       const info = [
         person.name, 
@@ -60,6 +61,7 @@ class App extends Component {
       return info
     })
     this.setPeople(people)
+    console.log(people)
     return people
   }
 

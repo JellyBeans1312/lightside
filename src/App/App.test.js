@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Call from '../Fetch/FetchCall'
 import {shallow} from 'enzyme';
+import AppData from './AppData.js'
 
 
 describe('App', () => {
@@ -50,6 +51,12 @@ describe('App', () => {
     wrapper.setState({people : []})
     wrapper.instance().showPeople()
     expect(fetch).toHaveBeenCalled()
+  })
+
+  it('cleanPeople should filter the returned fetch data', () => {
+    expect(wrapper.instance().cleanPeople([AppData.unfilteredPeople()]))
+      .toEqual([AppData.filteredPeople()])
+
   })
 
 

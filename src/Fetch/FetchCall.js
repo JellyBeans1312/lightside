@@ -13,12 +13,12 @@ const Call = {
       .catch(err => console.log(err))
   },
 
-  fetchPeople(getPeople) {
+  fetchPeople(cleanPeople) {
     console.log('fetching people')
      return fetch('https://swapi.co/api/people/')
       .then(response => response.json())
     // .then(data => console.log(data))
-      .then(data => getPeople(data.results))
+      .then(data => cleanPeople(data.results))
       .catch(err => console.log(err))
   },
 
