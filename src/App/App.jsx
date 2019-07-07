@@ -33,10 +33,10 @@ class App extends Component {
 
   showCrawl = () => {
     this.setState({film: {title:'', opening_crawl:'', release_date:''}})
-      Call.fetchCrawl(this.getCrawl)
+      Call.fetchCrawl(this.setCrawl)
   }
 
-  getCrawl = (crawl) => {
+  setCrawl = (crawl) => {
     this.setState({film: crawl})
   }
 

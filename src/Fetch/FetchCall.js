@@ -4,12 +4,12 @@ const Call = {
 
 
 
-   fetchCrawl(getCrawl) {
+   fetchCrawl(setCrawl) {
      console.log('fetching Crawl')
     const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
     return fetch('https://swapi.co/api/films')
       .then(response => response.json())
-      .then(data => getCrawl(data.results[randomNumber]) )
+      .then(data => setCrawl(data.results[randomNumber]) )
       .catch(err => console.log(err))
   },
 
