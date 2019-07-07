@@ -38,13 +38,19 @@ describe('App', () => {
     expect(fetch).toHaveBeenCalled()
   })
 
-  it('getCrawl should setState', () => {
+  it('setCrawl should setState', () => {
     expect(wrapper.state('film')).toEqual({title:'', opening_crawl:'', release_date:''})
     wrapper.instance().setCrawl({title:'Nathan', opening_crawl:'Nathan', release_date:'Nathan'})
     expect(wrapper.state('film')).toEqual({title:'Nathan', opening_crawl:'Nathan', release_date:'Nathan'})
   })
 
-  
+  it('showPeople should call fetchPeople if no people are loaded', () => {
+    const fetch = jest.spyOn(Call, 'fetchPeople')
+    expect(fetch).not.toHaveBeenCalled()
+    wrapper.setState({people : []})
+    wrapper.instance().showPeople()
+    expect(fetch).toHaveBeenCalled()
+  })
 
 
 
