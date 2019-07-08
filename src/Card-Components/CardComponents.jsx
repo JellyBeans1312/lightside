@@ -9,6 +9,7 @@ const CardComponents = ({group, addFavorite, crawl}) => {
   const loadingIcon = (<img src={loading} alt='Loading gif' className='loading-gif'/>)
 
   const cards = group.map(person => {
+
     return (<Card 
     props={person} 
     id={person[5]} 
