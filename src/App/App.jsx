@@ -74,7 +74,7 @@ class App extends Component {
   }
 
     cleanVehicles = (fetchData) => {
-      console.log(fetchData)
+      // console.log(fetchData)
       const vehicles = fetchData.map(vehicle => {
         const info = [
           vehicle.name,
@@ -88,7 +88,7 @@ class App extends Component {
         return info
       })
       this.setVehicles(vehicles)
-      console.log(vehicles)
+      // console.log(vehicles)
       return vehicles
     }
 
@@ -103,7 +103,7 @@ class App extends Component {
     }
     
     cleanPlanets = (fetchData) => {
-      console.log(fetchData)
+      // console.log(fetchData)
       const planets = fetchData.map(planet => {
         const info = [
           planet.name,
@@ -117,7 +117,7 @@ class App extends Component {
         return info
       })
       this.setPlanets(planets)
-      console.log(planets)
+      // console.log(planets)
       return planets
     }
 

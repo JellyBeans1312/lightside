@@ -1,9 +1,6 @@
 
 const Call = {
 
-
-
-
    fetchCrawl(setCrawl) {
      console.log('fetching Crawl')
     const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
