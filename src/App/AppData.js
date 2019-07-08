@@ -64,6 +64,37 @@ const AppData = {
     return ["Luke Skywalker", "Birth Year: 19BBY", "Gender: male", "Height: 172", "Eye Color: blue", "2014-12-09T13:50:51.644000Z", false]
   },
 
+  fetchedPlanets() {
+    return{
+      "count": 61, 
+      "next": "https://swapi.co/api/planets/?page=2", 
+      "previous": null, 
+      "results": [
+          {
+              "name": "Alderaan", 
+              "rotation_period": "24", 
+              "orbital_period": "364", 
+              "diameter": "12500", 
+              "climate": "temperate", 
+              "gravity": "1 standard", 
+              "terrain": "grasslands, mountains", 
+              "surface_water": "40", 
+              "population": "2000000000", 
+              "residents": [
+                  "https://swapi.co/api/people/5/", 
+                  "https://swapi.co/api/people/68/", 
+                  "https://swapi.co/api/people/81/"
+              ], 
+              "films": [
+                  "https://swapi.co/api/films/6/", 
+                  "https://swapi.co/api/films/1/"
+              ], 
+              "created": "2014-12-10T11:35:48.479000Z", 
+              "edited": "2014-12-20T20:58:18.420000Z", 
+              "url": "https://swapi.co/api/planets/2/"
+          }]}
+  },
+
   unfilteredPlanets() {
     return {climate: "temperate",
     created: "2014-12-10T11:35:48.479000Z",
@@ -83,6 +114,36 @@ const AppData = {
 
   filteredPlanets() {
     return ["Alderaan", "Terrain: grasslands, mountains", "Diameter: 12500", "Population: 2000000000", null, "2014-12-10T11:35:48.479000Z", false]
+  },
+
+  fetchedVehicles() {
+    return {
+      "count": 39, 
+      "next": "https://swapi.co/api/vehicles/?page=2", 
+      "previous": null, 
+      "results": [
+          {
+              "name": "Sand Crawler", 
+              "model": "Digger Crawler", 
+              "manufacturer": "Corellia Mining Corporation", 
+              "cost_in_credits": "150000", 
+              "length": "36.8", 
+              "max_atmosphering_speed": "30", 
+              "crew": "46", 
+              "passengers": "30", 
+              "cargo_capacity": "50000", 
+              "consumables": "2 months", 
+              "vehicle_class": "wheeled", 
+              "pilots": [], 
+              "films": [
+                  "https://swapi.co/api/films/5/", 
+                  "https://swapi.co/api/films/1/"
+              ], 
+              "created": "2014-12-10T15:36:25.724000Z", 
+              "edited": "2014-12-22T18:21:15.523587Z", 
+              "url": "https://swapi.co/api/vehicles/4/"
+          }]
+    }
   },
 
   unfilteredVehicles() {
