@@ -70,6 +70,11 @@ class App extends Component {
   showVehicles = () => {
     if(this.state.vehicles.length === 0) {
       Call.fetchVehicles(this.cleanVehicles)
+      /*
+        fetchVehicles.then(vehicles => cleanVehicles(vehicles))
+        .then(vehicles => this.setState({ vehicles }))
+
+      */
     }
   }
 

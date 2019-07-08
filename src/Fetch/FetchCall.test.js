@@ -3,6 +3,7 @@ import Call from './FetchCall.js';
 import React from 'react';
 import {shallow} from 'enzyme';
 import AppData from '../App/AppData.js'
+import App from '../App/App.jsx'
 
 describe('FetchCall', () => {
   let mockFunc;
@@ -30,6 +31,25 @@ describe('FetchCall', () => {
     await Call.fetchPeople(mockFunc)
     expect(window.fetch).toHaveBeenCalledWith(url)
   })
+
+
+  
+
+
+  it('should call cleanPeople with a people', async () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      json: () => Promise.resolve(AppData.fetchedPeople())
+    }))
+
+    await Call.fetchPeople(mockFunc)
+    expect(mockFunc).toHaveBeenCalledWith([AppData.unfilteredPeople()])
+  })
+
+
+
+
+
+
 
   it('should fetch from people link', async () => {
     const url = 'https://swapi.co/api/planets/'

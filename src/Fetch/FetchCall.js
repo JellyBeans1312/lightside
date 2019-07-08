@@ -14,7 +14,6 @@ const Call = {
     console.log('fetching people')
      return fetch('https://swapi.co/api/people/')
       .then(response => response.json())
-    // .then(data => console.log(data))
       .then(data => cleanPeople(data.results))
       .catch(err => console.log(err))
   },
