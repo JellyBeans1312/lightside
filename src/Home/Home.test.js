@@ -4,9 +4,17 @@ import Home from './Home';
 
 describe('Home', () => {
   let wrapper
+  let mockCrawl;
   beforeEach(() => {
+    mockCrawl= {
+      title: 'hello',
+      opening_crawl: 'hi',
+      release_date: 239
+    }
     wrapper = shallow(
-      <Home />
+      <Home 
+        crawl={mockCrawl}
+      />
     )
   });
 
