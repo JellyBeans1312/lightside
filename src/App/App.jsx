@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import CardComponents from '../Card-Components/CardComponents';
 import './App.scss';
-import {Route, NavLink } from "react-router-dom";
+import {Route} from "react-router-dom";
+import Nav from '../Nav/Nav.jsx'
+import Call from '../Fetch/FetchCall'
 
 
 class App extends Component {
@@ -13,31 +15,39 @@ class App extends Component {
       vehicles: [],
       planets: [],
       allFavorites: [],
-      isHidden: false,
-      page: 'home'
+      isHidden: false
     }
   }
   
   componentDidMount = () => {
-    const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
-    fetch('https://swapi.co/api/films')
-      .then(response => response.json())
-      .then(data => this.setState({ film: data.results[randomNumber] }))
-      .catch(err => console.log(err))
-
     if (window.location.href === 'http://localhost:3000/people') {
-      this.getPeople()
+      this.showPeople()
     } else if (window.location.href === 'http://localhost:3000/planets') {
       this.getPlanets()
     } else if (window.location.href === 'http://localhost:3000/vehicles') {
-      this.getVehicles()
+      this.showVehicles()
+    } else if (window.location.href === 'http://localhost:3000/') {
+      this.showCrawl()
     }
   }
 
-  getPeople = () => {
-    fetch('https://swapi.co/api/people/')
-    .then(response => response.json())
-    .then(data => this.setState({people: data.results.map(person => {
+  showCrawl = () => {
+    this.setState({film: {title:'', opening_crawl:'', release_date:''}})
+      Call.fetchCrawl(this.setCrawl)
+  }
+
+  setCrawl = (crawl) => {
+    this.setState({film: crawl})
+  }
+
+  showPeople = () => {
+    if(this.state.people.length === 0) {
+      Call.fetchPeople(this.cleanPeople)
+    }
+  }
+
+  cleanPeople = (fetchData) => {
+    const people = fetchData.map(person => {
       const info = [
         person.name, 
         `Birth Year: ${person.birth_year}`, 
@@ -47,16 +57,25 @@ class App extends Component {
         person.created,
         false
       ]
-        return info
-      })}))
-      .catch(err => console.log(err))
-      this.updateGroup('people')
-    }
+      return info
+    })
+    this.setPeople(people)
+    return people
+  }
 
-    getVehicles = () => {
-      fetch('https://swapi.co/api/vehicles')
-      .then(response => response.json())
-      .then(data => this.setState({vehicles: data.results.map(vehicle => {
+  setPeople = (people) => {
+    this.setState({people: people})
+  }
+
+  showVehicles = () => {
+    if(this.state.vehicles.length === 0) {
+      Call.fetchVehicles(this.cleanVehicles)
+    }
+  }
+
+    cleanVehicles = (fetchData) => {
+      // console.log(fetchData)
+      const vehicles = fetchData.map(vehicle => {
         const info = [
           vehicle.name,
           `Model: ${vehicle.model}`,
@@ -67,15 +86,25 @@ class App extends Component {
           false
         ]
         return info
-      })}))
-      .catch(err => console.log(err))
-      this.updateGroup('vehicles')
+      })
+      this.setVehicles(vehicles)
+      // console.log(vehicles)
+      return vehicles
+    }
+
+    setVehicles = (vehicles) => {
+      this.setState({vehicles: vehicles})
+    }
+
+    showPlanets = () => {
+      if(this.state.planets.length === 0) {
+        Call.fetchPlanets(this.cleanPlanets)
+      }
     }
     
-    getPlanets = () => {
-      fetch('https://swapi.co/api/planets')
-      .then(response => response.json())
-      .then(data => this.setState({planets: data.results.map(planet => {
+    cleanPlanets = (fetchData) => {
+      // console.log(fetchData)
+      const planets = fetchData.map(planet => {
         const info = [
           planet.name,
           `Terrain: ${planet.terrain}`,
@@ -86,9 +115,14 @@ class App extends Component {
           false
         ]
         return info
-      })}))
-      .catch(err => console.log(err))
-      this.updateGroup('planets')
+      })
+      this.setPlanets(planets)
+      // console.log(planets)
+      return planets
+    }
+
+    setPlanets = (planets) => {
+      this.setState({planets: planets})
     }
 
   handleFavorite = (prop) => {
@@ -103,52 +137,16 @@ class App extends Component {
       }
   }
 
-  updateGroup = (string) => {
-    this.setState({page: string})
-  }
-  
   render() {
     return (
       <main className="App">
-        <nav>
-            <NavLink 
-              to={'/'} 
-              className='nav home' 
-              onClick={() => this.updateGroup('home')}
-              > 
-              <h1>LIGHT SIDE</h1>
-            </NavLink>
-          <section>
-            <NavLink 
-              to='/people' 
-              className='nav link' 
-              onClick={this.getPeople}
-              > 
-                <h2>PEOPLE</h2> 
-            </NavLink>
-            <NavLink 
-              to='/planets' 
-              className='nav link' 
-              onClick={this.getPlanets}
-              > 
-                <h2>PLANETS</h2> 
-            </NavLink>
-            <NavLink 
-              to='/vehicles' 
-              className='nav link' 
-              onClick={() => this.getVehicles()}
-              > 
-                <h2>VEHICLES</h2> 
-            </NavLink>
-            <NavLink 
-              to='/favorites' 
-              className='nav link' 
-              onClick={() => this.updateGroup('favorites')}
-              > 
-                <h2>FAVORITES <span>{this.state.allFavorites.length}</span></h2>
-            </NavLink>
-          </section>
-        </nav>
+        <Nav 
+          getCrawl={this.showCrawl}
+          getPeople={this.showPeople} 
+          getPlanets={this.showPlanets}
+          getVehicles={this.showVehicles}
+          allFavorites={this.state.allFavorites}
+        />
         <Route 
           exact path='/' 
           component={() => <CardComponents 
