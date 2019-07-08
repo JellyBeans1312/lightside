@@ -3,12 +3,12 @@ import './Card.scss'
 import green from '../images/green-lightsaber.png'
 import red from '../images/red-lightsabers.jpg'
 
-const Card = ({props, addFavorite, id}) => {
+const Card = ({props, addFavorite}) => {
   return (
     <article>
       <div>
         <p>{props[0]}</p>
-        <button onClick={() => addFavorite(props)}>
+        <button onClick={() => addFavorite(props)} className='favorites'>
         { 
           props[6] === false && <img src={red} className='unfavorite-btn' alt='stuff'/>
         }
