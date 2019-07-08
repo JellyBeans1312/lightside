@@ -10,10 +10,10 @@ const Card = ({props, addFavorite}) => {
       <div>
         <p>{props[0]}</p>
         { 
-          props[6] === false && <img src={red} className='unfavorite-btn' alt='stuff' onClick={() => addFavorite(props)}/>
+          props[6] === false && <img src={red} className='unfavorite-btn favorites' alt='stuff' onClick={() => addFavorite(props)}/>
         }
         {
-          props[6] === true && <img src={green} className='favorite-btn' alt='stuff' onClick={() => addFavorite(props)}/>
+          props[6] === true && <img src={green} className='favorite-btn favorites' alt='stuff' onClick={() => addFavorite(props)}/>
         } 
       </div>
       <p>{props[1]}</p>
