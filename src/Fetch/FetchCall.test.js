@@ -31,10 +31,28 @@ describe('FetchCall', () => {
     expect(window.fetch).toHaveBeenCalledWith(url)
   })
 
+  it('should call cleanPeople with people', async () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      json: () => Promise.resolve(AppData.fetchedPeople())
+    }))
+
+    await Call.fetchPeople(mockFunc)
+    expect(mockFunc).toHaveBeenCalledWith([AppData.unfilteredPeople()])
+  })
+
   it('should fetch from people link', async () => {
     const url = 'https://swapi.co/api/planets/'
     await Call.fetchPlanets(mockFunc)
     expect(window.fetch).toHaveBeenCalledWith(url)
+  })
+
+  it('should call cleanPlanets with planets', async () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      json: () => Promise.resolve(AppData.fetchedPlanets())
+    }))
+
+    await Call.fetchPlanets(mockFunc)
+    expect(mockFunc).toHaveBeenCalledWith([AppData.unfilteredPlanets()])
   })
 
   it('should fetch from people link', async () => {
@@ -43,15 +61,16 @@ describe('FetchCall', () => {
     expect(window.fetch).toHaveBeenCalledWith(url)
   })
 
+  it('should call cleanVehicles with vehicles', async () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      json: () => Promise.resolve(AppData.fetchedVehicles())
+    }))
+
+    await Call.fetchVehicles(mockFunc)
+    expect(mockFunc).toHaveBeenCalledWith([AppData.unfilteredVehicles()])
+  })
+
 
 
 })
 
-// global.window = Object.create(window);
-// const url = "http://dummy.com";
-// Object.defineProperty(window, 'location', {
-//   value: {
-//     href: url
-//   }
-// });
-// expect(window.location.href).toEqual(url);  

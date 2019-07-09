@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.scss'
-import green from '../images/green-lightsaber.png'
-import red from '../images/red-lightsabers.png'
+import green from '../images/green.png'
+import red from '../images/red.png'
 
 const Card = ({props, addFavorite}) => {
 
@@ -9,14 +9,12 @@ const Card = ({props, addFavorite}) => {
     <article>
       <div>
         <p>{props[0]}</p>
-        <button onClick={() => addFavorite(props)} className='favorites'>
         { 
-          props[6] === false && <img src={red} className='unfavorite-btn' alt='stuff'/>
+          props[6] === false && <img src={red} className='unfavorite-btn favorites' alt='stuff' onClick={() => addFavorite(props)}/>
         }
         {
-          props[6] === true && <img src={green} className='favorite-btn' alt='stuff'/>
+          props[6] === true && <img src={green} className='favorite-btn favorites' alt='stuff' onClick={() => addFavorite(props)}/>
         } 
-        </button>
       </div>
       <p>{props[1]}</p>
       <p>{props[2]}</p>

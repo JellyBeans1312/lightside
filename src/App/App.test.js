@@ -7,13 +7,24 @@ import AppData from './AppData.js'
 
 
 describe('App', () => {
-  let wrapper;
+  let wrapper ;
   let mockData = [1,1,1,1,1,1,false]
   beforeEach(() => {
     wrapper = shallow(<App/>)
   })
 
   it('should render all components in order', () => {
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  it('should render people route', () => {
+    global.window = Object.create(window);
+    let url = 'http://localhost:3000/people';
+    Object.defineProperty(window, 'location', {
+      value: {
+       href: url
+      }
+    });
     expect(wrapper).toMatchSnapshot()
   })
 

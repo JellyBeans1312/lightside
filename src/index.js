@@ -11,6 +11,7 @@ const router = (
   </BrowserRouter>
 )
 
+/* istanbul ignore next */
 ReactDOM.render(router, document.getElementById('root'));
 
 serviceWorker.unregister();
