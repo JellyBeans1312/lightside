@@ -9,6 +9,7 @@ describe('FetchCall', () => {
   beforeEach(() => {
     mockFunc = jest.fn()
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      ok: true,
       json: () => Promise.resolve()
     }))
   })
@@ -21,8 +22,19 @@ describe('FetchCall', () => {
 
   it('should call setCrawl with a crawl', async () => {
     const film = {title:'Nathan', opening_crawl:'Nathan', release_date:'Nathan'}
-    await Call.fetchCrawl(mockFunc(film))
-    expect(mockFunc).toHaveBeenCalledWith(film)
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({results: [film]})
+    }))
+    const result = await Call.fetchCrawl()
+    expect(result.results).toEqual([film])
+  })
+
+  it('should throw error', async () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      ok: false
+    }))
+    await expect(Call.fetchCrawl()).rejects.toEqual(Error('Error'))
   })
 
   it('should fetch from people link', async () => {

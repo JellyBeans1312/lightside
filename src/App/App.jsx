@@ -32,8 +32,10 @@ class App extends Component {
   }
 
   showCrawl = () => {
+    const randomNumber = Math.floor(Math.random() * (6 - 0 + 1))
     this.setState({film: {title:'', opening_crawl:'', release_date:''}})
       Call.fetchCrawl(this.setCrawl)
+      .then(data => this.setCrawl(data.results[randomNumber]) )
   }
 
   setCrawl = (crawl) => {
