@@ -7,13 +7,24 @@ import AppData from './AppData.js'
 
 
 describe('App', () => {
-  let wrapper;
+  let wrapper ;
   let mockData = [1,1,1,1,1,1,false]
   beforeEach(() => {
     wrapper = shallow(<App/>)
   })
 
   it('should render all components in order', () => {
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  it('should render people route', () => {
+    global.window = Object.create(window);
+    let url = 'http://localhost:3000/people';
+    Object.defineProperty(window, 'location', {
+      value: {
+       href: url
+      }
+    });
     expect(wrapper).toMatchSnapshot()
   })
 
@@ -42,7 +53,7 @@ describe('App', () => {
   it('setCrawl should setState', () => {
     expect(wrapper.state('film')).toEqual({title:'', opening_crawl:'', release_date:''})
     wrapper.instance().setCrawl({title:'Nathan', opening_crawl:'Nathan', release_date:'Nathan'})
-    expect(wrapper.state('film')).toEqual()
+    expect(wrapper.state('film')).toEqual({title:'Nathan', opening_crawl:'Nathan', release_date:'Nathan'})
   })
 
   it('showPeople should call fetchPeople if people length is 0', () => {
