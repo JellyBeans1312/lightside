@@ -1,7 +1,7 @@
 import React from 'react';
 import './Nav.scss';
 import {NavLink} from 'react-router-dom';
-
+import PropTypes from 'prop-types'
 
 const Nav = ({getCrawl, getPeople, getPlanets, getVehicles, allFavorites}) => {
   return (
@@ -46,5 +46,12 @@ const Nav = ({getCrawl, getPeople, getPlanets, getVehicles, allFavorites}) => {
   )
 }
 
+Nav.propTypes = {
+  getCrawl: PropTypes.func,
+  getPeople: PropTypes.func,
+  getPlanets: PropTypes.func,
+  getVehicles: PropTypes.func,
+  allFavorites: PropTypes.array
+}
 export default Nav;
 

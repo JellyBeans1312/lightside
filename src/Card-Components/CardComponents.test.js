@@ -2,7 +2,6 @@ import React from 'react';
 import CardComponents from './CardComponents';
 import {shallow} from 'enzyme';
 import AppData from '../App/AppData';
-import App from '../App/App.jsx'
 
 
 describe('CardComponents', () => {

@@ -2,9 +2,10 @@ import React from 'react';
 import './Card.scss'
 import green from '../images/green.png'
 import red from '../images/red.png'
+import PropTypes from 'prop-types'
 
 const Card = ({props, addFavorite}) => {
-
+console.log(props)
   return (
     <article>
       <div>
@@ -22,6 +23,11 @@ const Card = ({props, addFavorite}) => {
       <p>{props[4]}</p>
     </article>
   )
+}
+
+Card.propTypes = {
+  addFavorite: PropTypes.func,
+  props: PropTypes.array
 }
 
 export default Card;
