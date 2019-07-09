@@ -5,7 +5,7 @@ LightSide is an informational app based on the StarWars theme. Upon loading a ra
 
 ## Project goals
 A one week project for a two person team.
-This project was meant to solidify our skills in React while being an introduction to Jest/Enzyme asynchronous and unit testing, React Router, Fetch calls, and using an API for the first time. Check out the [project link ](http://frontend.turing.io/projects/light-side.html) for more!
+This project was meant to solidify our skills in React while being an introduction to Jest/Enzyme asynchronous and unit testing, React Router, Fetch calls, and using an API for the first time. Check out the [project specs](http://frontend.turing.io/projects/light-side.html)!
 
 
 ## Install
