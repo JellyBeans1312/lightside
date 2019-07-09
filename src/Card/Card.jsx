@@ -5,7 +5,6 @@ import red from '../images/red.png'
 import PropTypes from 'prop-types'
 
 const Card = ({props, addFavorite}) => {
-console.log(props)
   return (
     <article>
       <div>

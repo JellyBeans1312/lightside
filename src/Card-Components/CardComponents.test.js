@@ -10,7 +10,7 @@ describe('CardComponents', () => {
     // app = shallow(<App/>)
     cardComponents = shallow(<CardComponents
       group={[AppData.filteredPlanets()]}
-      addFavorite={'Nathan'}
+      addFavorite={jest.fn()}
       crawl={{title:'Nathan', opening_crawl:'Nathan', release_date:'Nathan'}}
     />)
     global.window = Object.create(window);
@@ -29,7 +29,7 @@ describe('CardComponents', () => {
   it('should render first loading icon', () => {
     cardComponents = shallow(<CardComponents
       group={[AppData.filteredPlanets()]}
-      addFavorite={'Nathan'}
+      addFavorite={jest.fn()}
       crawl={{title:'', opening_crawl:'Nathan', release_date:'Nathan'}}
     />)
     expect(window.location.href).toEqual('http://localhost:3000/');
@@ -46,7 +46,7 @@ describe('CardComponents', () => {
     });
     cardComponents = shallow(<CardComponents
       group={[]}
-      addFavorite={'Nathan'}
+      addFavorite={jest.fn()}
       crawl={{title:'Nathan', opening_crawl:'Nathan', release_date:'Nathan'}}
     />)
     expect(cardComponents).toMatchSnapshot()
