@@ -23,7 +23,7 @@ class App extends Component {
     if (window.location.href === 'http://localhost:3000/people') {
       this.showPeople()
     } else if (window.location.href === 'http://localhost:3000/planets') {
-      this.getPlanets()
+      this.showPlanets()
     } else if (window.location.href === 'http://localhost:3000/vehicles') {
       this.showVehicles()
     } else if (window.location.href === 'http://localhost:3000/') {

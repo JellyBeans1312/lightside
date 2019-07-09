@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App/App.jsx';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter} from "react-router-dom";
+import { BrowserRouter as Router} from "react-router-dom";
 
 const router = (
-  <BrowserRouter>
+  <Router>
     <App/>
-  </BrowserRouter>
+  </Router>
 )
 
 /* istanbul ignore next */
