@@ -71,14 +71,6 @@ describe('FetchCall', () => {
   })
 
 
-  
+
 })
 
-// global.window = Object.create(window);
-// const url = "http://dummy.com";
-// Object.defineProperty(window, 'location', {
-//   value: {
-//     href: url
-//   }
-// });
-// expect(window.location.href).toEqual(url);  

@@ -42,7 +42,7 @@ describe('App', () => {
   it('setCrawl should setState', () => {
     expect(wrapper.state('film')).toEqual({title:'', opening_crawl:'', release_date:''})
     wrapper.instance().setCrawl({title:'Nathan', opening_crawl:'Nathan', release_date:'Nathan'})
-    expect(wrapper.state('film')).toEqual({title:'Nathan', opening_crawl:'Nathan', release_date:'Nathan'})
+    expect(wrapper.state('film')).toEqual()
   })
 
   it('showPeople should call fetchPeople if people length is 0', () => {

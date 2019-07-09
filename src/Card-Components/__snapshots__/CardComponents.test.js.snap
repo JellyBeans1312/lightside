@@ -1,3 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CardComponents cardComponents to render in order 1`] = `ShallowWrapper {}`;
+
+exports[`CardComponents should not render second loading icon 1`] = `ShallowWrapper {}`;
+
+exports[`CardComponents should render first loading icon 1`] = `ShallowWrapper {}`;
+
+exports[`CardComponents should render no favorites message 1`] = `ShallowWrapper {}`;
+
+exports[`CardComponents should render no favorites message 2`] = `ShallowWrapper {}`;
+
+exports[`CardComponents should render no favorites message 3`] = `ShallowWrapper {}`;
+
+exports[`CardComponents should render no favorites message 4`] = `ShallowWrapper {}`;
+
+exports[`CardComponents should render second loading icon 1`] = `ShallowWrapper {}`;
