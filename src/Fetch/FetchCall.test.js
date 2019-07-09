@@ -45,14 +45,27 @@ describe('FetchCall', () => {
 
   it('should call cleanPeople with people', async () => {
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      ok: true,
       json: () => Promise.resolve(AppData.fetchedPeople())
     }))
 
-    await Call.fetchPeople(mockFunc)
-    expect(mockFunc).toHaveBeenCalledWith([AppData.unfilteredPeople()])
+    const result = await Call.fetchPeople()
+    expect(result.results).toEqual([AppData.unfilteredPeople()])
   })
 
-  it('should fetch from people link', async () => {
+  it('should throw error', async () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      ok: false
+    }))
+    await expect(Call.fetchPeople()).rejects.toEqual(Error('Error'))
+  })
+
+
+
+
+
+
+  it('should fetch from planets link', async () => {
     const url = 'https://swapi.co/api/planets/'
     await Call.fetchPlanets(mockFunc)
     expect(window.fetch).toHaveBeenCalledWith(url)
@@ -60,12 +73,24 @@ describe('FetchCall', () => {
 
   it('should call cleanPlanets with planets', async () => {
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      ok: true,
       json: () => Promise.resolve(AppData.fetchedPlanets())
     }))
 
-    await Call.fetchPlanets(mockFunc)
-    expect(mockFunc).toHaveBeenCalledWith([AppData.unfilteredPlanets()])
+    const result = await Call.fetchPlanets(mockFunc)
+    expect(result.results).toEqual([AppData.unfilteredPlanets()])
   })
+
+  it('should throw error', async () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      ok: false
+    }))
+    await expect(Call.fetchPlanets()).rejects.toEqual(Error('Error'))
+  })
+
+
+
+
 
   it('should fetch from people link', async () => {
     const url = 'https://swapi.co/api/vehicles/'
@@ -75,14 +100,20 @@ describe('FetchCall', () => {
 
   it('should call cleanVehicles with vehicles', async () => {
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      ok: true,
       json: () => Promise.resolve(AppData.fetchedVehicles())
     }))
 
-    await Call.fetchVehicles(mockFunc)
-    expect(mockFunc).toHaveBeenCalledWith([AppData.unfilteredVehicles()])
+    const result = await Call.fetchVehicles(mockFunc)
+    expect(result.results).toEqual([AppData.unfilteredVehicles()])
   })
 
-
+it('should throw error', async () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      ok: false
+    }))
+    await expect(Call.fetchVehicles()).rejects.toEqual(Error('Error'))
+  })
 
 })
 

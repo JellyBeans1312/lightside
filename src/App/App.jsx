@@ -45,6 +45,7 @@ class App extends Component {
   showPeople = () => {
     if(this.state.people.length === 0) {
       Call.fetchPeople(this.cleanPeople)
+      .then(data => this.cleanPeople(data.results))
     }
   }
 
@@ -72,6 +73,7 @@ class App extends Component {
   showVehicles = () => {
     if(this.state.vehicles.length === 0) {
       Call.fetchVehicles(this.cleanVehicles)
+      .then(data => this.cleanVehicles(data.results))
       /*
         fetchVehicles.then(vehicles => cleanVehicles(vehicles))
         .then(vehicles => this.setState({ vehicles }))
@@ -106,6 +108,7 @@ class App extends Component {
     showPlanets = () => {
       if(this.state.planets.length === 0) {
         Call.fetchPlanets(this.cleanPlanets)
+        .then(data => this.cleanPlanets(data.results))
       }
     }
     
