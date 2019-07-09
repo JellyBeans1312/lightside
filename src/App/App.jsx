@@ -74,11 +74,6 @@ class App extends Component {
     if(this.state.vehicles.length === 0) {
       Call.fetchVehicles(this.cleanVehicles)
       .then(data => this.cleanVehicles(data.results))
-      /*
-        fetchVehicles.then(vehicles => cleanVehicles(vehicles))
-        .then(vehicles => this.setState({ vehicles }))
-
-      */
     }
   }
 
@@ -97,7 +92,6 @@ class App extends Component {
         return info
       })
       this.setVehicles(vehicles)
-      // console.log(vehicles)
       return vehicles
     }
 
@@ -113,7 +107,6 @@ class App extends Component {
     }
     
     cleanPlanets = (fetchData) => {
-      // console.log(fetchData)
       const planets = fetchData.map(planet => {
         const info = [
           planet.name,
@@ -127,7 +120,6 @@ class App extends Component {
         return info
       })
       this.setPlanets(planets)
-      // console.log(planets)
       return planets
     }
 

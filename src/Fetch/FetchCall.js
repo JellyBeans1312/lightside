@@ -1,7 +1,7 @@
 
 const Call = {
 
-   fetchCrawl(setCrawl) {
+   fetchCrawl() {
     return fetch('https://swapi.co/api/films')
       .then(response => {
         if (response.ok) {
@@ -10,7 +10,7 @@ const Call = {
       })
   },
 
-  fetchPeople(cleanPeople) {
+  fetchPeople() {
      return fetch('https://swapi.co/api/people/')
       .then(response => {
         if (response.ok) {
@@ -19,7 +19,7 @@ const Call = {
       })
   },
 
-  fetchPlanets(cleanPlanets) {
+  fetchPlanets() {
     return fetch('https://swapi.co/api/planets/')
      .then(response => {
       if (response.ok) {
@@ -28,7 +28,7 @@ const Call = {
     })
   },
 
-  fetchVehicles(cleanVehicles) {
+  fetchVehicles() {
     return fetch('https://swapi.co/api/vehicles/')
      .then(response => {
       if (response.ok) {
@@ -36,7 +36,6 @@ const Call = {
       } else { throw Error('Error')}
     })
   }
-
 }
 
 

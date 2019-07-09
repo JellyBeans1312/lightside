@@ -1,13 +1,11 @@
 
 import Call from './FetchCall.js';
-import React from 'react';
-import {shallow} from 'enzyme';
 import AppData from '../App/AppData.js'
 
 describe('FetchCall', () => {
-  let mockFunc;
+
   beforeEach(() => {
-    mockFunc = jest.fn()
+
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       ok: true,
       json: () => Promise.resolve()
@@ -16,7 +14,7 @@ describe('FetchCall', () => {
 
   it('should fetch films', async () => {
     const url = 'https://swapi.co/api/films'
-    await Call.fetchCrawl(mockFunc)
+    await Call.fetchCrawl()
       expect(window.fetch).toHaveBeenCalledWith(url)
   })
 
@@ -39,7 +37,7 @@ describe('FetchCall', () => {
 
   it('should fetch from people link', async () => {
     const url = 'https://swapi.co/api/people/'
-    await Call.fetchPeople(mockFunc)
+    await Call.fetchPeople()
     expect(window.fetch).toHaveBeenCalledWith(url)
   })
 
@@ -60,14 +58,9 @@ describe('FetchCall', () => {
     await expect(Call.fetchPeople()).rejects.toEqual(Error('Error'))
   })
 
-
-
-
-
-
   it('should fetch from planets link', async () => {
     const url = 'https://swapi.co/api/planets/'
-    await Call.fetchPlanets(mockFunc)
+    await Call.fetchPlanets()
     expect(window.fetch).toHaveBeenCalledWith(url)
   })
 
@@ -77,7 +70,7 @@ describe('FetchCall', () => {
       json: () => Promise.resolve(AppData.fetchedPlanets())
     }))
 
-    const result = await Call.fetchPlanets(mockFunc)
+    const result = await Call.fetchPlanets()
     expect(result.results).toEqual([AppData.unfilteredPlanets()])
   })
 
@@ -88,13 +81,9 @@ describe('FetchCall', () => {
     await expect(Call.fetchPlanets()).rejects.toEqual(Error('Error'))
   })
 
-
-
-
-
   it('should fetch from people link', async () => {
     const url = 'https://swapi.co/api/vehicles/'
-    await Call.fetchVehicles(mockFunc)
+    await Call.fetchVehicles()
     expect(window.fetch).toHaveBeenCalledWith(url)
   })
 
@@ -104,7 +93,7 @@ describe('FetchCall', () => {
       json: () => Promise.resolve(AppData.fetchedVehicles())
     }))
 
-    const result = await Call.fetchVehicles(mockFunc)
+    const result = await Call.fetchVehicles()
     expect(result.results).toEqual([AppData.unfilteredVehicles()])
   })
 
