@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CardComponents from '../Card-Components/CardComponents';
 import './App.scss';
-import {Route} from "react-router-dom";
+import {Route, BrowserRouter as Router} from "react-router-dom";
 import Nav from '../Nav/Nav.jsx'
 import Call from '../Fetch/FetchCall'
 
@@ -152,6 +152,8 @@ class App extends Component {
           getVehicles={this.showVehicles}
           allFavorites={this.state.allFavorites}
         />
+        <Router>
+
         <Route 
           exact path='/' 
           component={() => <CardComponents 
@@ -187,7 +189,8 @@ class App extends Component {
             group={this.state.allFavorites}
             addFavorite={this.handleFavorite}
           />}
-        />
+          />
+          </Router>
       </main>
     );
   }

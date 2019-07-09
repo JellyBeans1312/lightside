@@ -2,15 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Call from '../Fetch/FetchCall'
-import {shallow} from 'enzyme';
-import AppData from './AppData.js'
-
+import {shallow, mount} from 'enzyme';
+import AppData from './AppData.js';
 
 describe('App', () => {
   let wrapper ;
   let mockData = [1,1,1,1,1,1,false]
   beforeEach(() => {
-    wrapper = shallow(<App/>)
+    wrapper = mount(<App/>)
   })
 
   it('should render all components in order', () => {

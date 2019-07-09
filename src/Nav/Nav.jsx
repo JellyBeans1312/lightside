@@ -1,11 +1,12 @@
 import React from 'react';
 import './Nav.scss';
-import {NavLink} from 'react-router-dom';
+import {NavLink, BrowserRouter as Router} from 'react-router-dom';
 
 
 const Nav = ({getCrawl, getPeople, getPlanets, getVehicles, allFavorites}) => {
   return (
     <nav>
+      <Router>
             <NavLink 
               to={'/'} 
               className='nav home' 
@@ -42,6 +43,7 @@ const Nav = ({getCrawl, getPeople, getPlanets, getVehicles, allFavorites}) => {
                 <h2>FAVORITES <span>{allFavorites.length}</span></h2>
             </NavLink>
           </section>
+          </Router>
         </nav>
   )
 }
