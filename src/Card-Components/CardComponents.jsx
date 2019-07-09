@@ -8,12 +8,12 @@ const CardComponents = ({group, addFavorite, crawl}) => {
   const page = window.location.href
   const loadingIcon = (<img src={loading} alt='Loading gif' className='loading-gif'/>)
 
-  const cards = group.map(person => {
+  const cards = group.map((person, i) => {
 
     return (<Card 
     props={person} 
     id={person[5]} 
-    key={person[5]}
+    key={person[5] + i}
     addFavorite={addFavorite}
   />)})
 
