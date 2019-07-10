@@ -4,12 +4,13 @@
 LightSide is an informational app based on the StarWars theme. Upon loading a random opening crawl will be displayed along with links to view people, planets, and vehicles from the StarWars universe as well as a link to any favorited items.
 
 ## Project goals
-A two person team with 6 days to learn and implement all these new tools.
+LightSide is a two person team project with 6 days to solidify our skills in React and learn and implement all the new tools below.
 * Jest/Enzyme asynchronous and unit testing
 * React Router
 * Fetch calls
 * using an API for the first time
-LightSide was meant to solidify our skills in React while being an introduction to Jest/Enzyme asynchronous and unit testing, React Router, Fetch calls, and using an API for the first time. Check out the [project specs](http://frontend.turing.io/projects/light-side.html)!
+
+ Check out the [project specs](http://frontend.turing.io/projects/light-side.html)!
 
 
 ## Install
