@@ -17,7 +17,8 @@ LightSide was meant to solidify our skills in React while being an introduction 
 
 ### By [Nathan Froehlich](https://github.com/Nathan-Froeh) & [Aidan McKay](https://github.com/JellyBeans1312)
 
-
+![alt text]()
+![alt text](https://github.com/JellyBeans1312/lightside/blob/master/src/images/Screen%20Shot%202019-07-10%20at%206.50.01%20AM.png)
 ![alt text](https://github.com/JellyBeans1312/lightside/blob/master/src/images/Screen%20Shot%202019-07-10%20at%206.50.43%20AM.png)
-![alt text]()
-![alt text]()
+
+
