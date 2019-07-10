@@ -3,7 +3,7 @@
 ## Description
 LightSide is an informational app based on the StarWars theme. Upon loading a random opening crawl will be displayed along with links to view people, planets, and vehicles from the StarWars universe as well as a link to any favorited items.
 
-## Project goals
+## Project/Learning goals
 LightSide is a two person team project with 6 days to solidify our skills in React and learn and implement all the new tools below.
 * Jest/Enzyme asynchronous and unit testing
 * React Router
