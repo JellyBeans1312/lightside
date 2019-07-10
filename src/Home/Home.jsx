@@ -1,9 +1,8 @@
 import React from 'react';
 import './Home.scss';
-
+import PropTypes from 'prop-types'
 
 const Home = ({crawl}) => {
-
   return(
     <section className='home'>
       <div className="fade"></div>
@@ -19,6 +18,10 @@ const Home = ({crawl}) => {
     </section>
     
   )
+}
+
+Home.propTypes = {
+  crawl: PropTypes.object
 }
 
 export default Home;

@@ -5,7 +5,6 @@ import {Route} from "react-router-dom";
 import Nav from '../Nav/Nav.jsx'
 import Call from '../Fetch/FetchCall'
 
-
 class App extends Component {
   constructor() {
     super()
@@ -78,7 +77,6 @@ class App extends Component {
   }
 
     cleanVehicles = (fetchData) => {
-      // console.log(fetchData)
       const vehicles = fetchData.map(vehicle => {
         const info = [
           vehicle.name,
@@ -128,15 +126,15 @@ class App extends Component {
     }
 
   handleFavorite = (prop) => {
-      const favorites = this.state.allFavorites;
-      if(!favorites.includes(prop)) {
-        prop[6] = !prop[6]
-        this.setState({allFavorites: [...favorites ,prop]})
-      } else {
-        prop[6] = !prop[6]
-        const unfavorite = favorites.filter(favorite => favorite !== prop)
-        this.setState({allFavorites: unfavorite})
-      }
+    const favorites = this.state.allFavorites;
+    if(!favorites.includes(prop)) {
+      prop[6] = !prop[6]
+      this.setState({allFavorites: [...favorites ,prop]})
+    } else {
+      prop[6] = !prop[6]
+      const unfavorite = favorites.filter(favorite => favorite !== prop)
+      this.setState({allFavorites: unfavorite})
+    }
   }
 
   render() {
@@ -189,7 +187,5 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;

@@ -3,11 +3,11 @@ import Card from '../Card/Card.jsx'
 import './CardComponents.scss'
 import Home from '../Home/Home.jsx';
 import loading from '../images/giphy.gif'
-const CardComponents = ({group, addFavorite, crawl}) => {
+import PropTypes from 'prop-types'
 
+const CardComponents = ({group, addFavorite, crawl}) => {
   const page = window.location.href
   const loadingIcon = (<img src={loading} alt='Loading gif' className='loading-gif'/>)
-
   const cards = group.map((person, i) => {
 
     return (<Card 
@@ -37,6 +37,12 @@ const CardComponents = ({group, addFavorite, crawl}) => {
 
     </section>
   )
+}
+
+CardComponents.propTypes = {
+  group: PropTypes.array, 
+  addFavorite: PropTypes.func,
+  crawl: PropTypes.object
 }
 
 export default CardComponents;
