@@ -78,7 +78,6 @@ class App extends Component {
   }
 
     cleanVehicles = (fetchData) => {
-      // console.log(fetchData)
       const vehicles = fetchData.map(vehicle => {
         const info = [
           vehicle.name,
